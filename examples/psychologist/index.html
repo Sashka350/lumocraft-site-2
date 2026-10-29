@@ -45,26 +45,23 @@
     .nav .nav-cta:hover { background: var(--forest); color: white; }
 
     .hero { padding: clamp(56px, 8vw, 108px) 0 70px; }
-    .hero-grid { display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: clamp(38px, 7vw, 92px); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr); align-items: center; gap: clamp(38px, 7vw, 92px); }
+    .hero-grid > *, .section-head > *, .approach-grid > *, .format-panel > *, .contact-grid > * { min-width: 0; }
     .eyebrow { margin-bottom: 23px; color: var(--clay); font-size: 10px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { max-width: 700px; margin-bottom: 25px; font-family: var(--serif); font-size: clamp(54px, 7.1vw, 94px); font-weight: 400; letter-spacing: -.065em; line-height: .96; }
     h1 em, h2 em { color: var(--clay); font-weight: 400; }
-    .hero-copy { max-width: 520px; margin-bottom: 30px; color: var(--muted); font-size: 16px; line-height: 1.8; }
-    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .hero-copy { max-width: 520px; margin-bottom: 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
     .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 0 21px; border: 1px solid var(--forest); border-radius: 999px; background: var(--forest); color: #fff; font-size: 12px; text-decoration: none; transition: transform .2s ease, background .2s ease; }
     .button:hover { transform: translateY(-2px); background: var(--forest-deep); }
-    .button.secondary { background: transparent; color: var(--forest); }
-    .button.secondary:hover { background: rgba(48, 72, 60, .08); }
     .button .arrow { font-size: 16px; }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 31px; color: var(--muted); font-size: 11px; }
-    .hero-meta span::before { content: "✳"; margin-right: 8px; color: var(--clay); }
-    .hero-art { position: relative; min-height: 500px; margin: 0; overflow: hidden; border-radius: 48% 48% 16px 16px; background: #d8d6c6; }
+    .hero-photo { min-width: 0; margin: 0; }
+    .hero-art { position: relative; min-height: 500px; overflow: hidden; border-radius: 48% 48% 16px 16px; background: #d8d6c6; aspect-ratio: 4 / 5; }
     .hero-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 31%; }
     .art-note { position: absolute; right: 18px; bottom: 20px; width: min(255px, 72%); padding: 18px 19px; border: 1px solid rgba(255,255,255,.65); border-radius: 4px; background: rgba(248, 246, 239, .92); box-shadow: 0 12px 32px rgba(35,56,46,.12); font-family: var(--serif); font-size: 19px; line-height: 1.3; }
     .art-note span { display: block; margin-top: 8px; color: var(--muted); font-family: var(--sans); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
-    .art-credit { position: absolute; top: 15px; left: 15px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.65); border-radius: 3px; background: rgba(248,246,239,.9); color: var(--muted); font-size: 9px; line-height: 1.5; }
-    .art-credit a { color: var(--forest); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .photo-credit { margin: 10px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .photo-credit a { color: var(--forest); text-decoration-thickness: 1px; text-underline-offset: 2px; }
 
     .section { padding: clamp(68px, 9vw, 112px) 0; }
     .section-head { display: grid; grid-template-columns: .75fr 1.25fr; gap: 40px; margin-bottom: 42px; }
@@ -95,17 +92,9 @@
     .format-panel p { max-width: 550px; margin: 18px 0 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
     .format-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
     .format-fact { padding: 17px 0; border-top: 1px solid rgba(38,53,45,.2); }
+    .format-fact.address { grid-column: 1 / -1; }
     .format-fact strong { display: block; margin-bottom: 6px; font-family: var(--serif); font-size: 23px; font-weight: 400; }
     .format-fact span { color: var(--muted); font-size: 11px; line-height: 1.5; }
-
-    .faq-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 44px; }
-    .faq-list details { border-top: 1px solid var(--line); }
-    .faq-list details:last-child { border-bottom: 1px solid var(--line); }
-    .faq-list summary { position: relative; padding: 20px 36px 20px 0; cursor: pointer; font-family: var(--serif); font-size: 22px; list-style: none; }
-    .faq-list summary::-webkit-details-marker { display: none; }
-    .faq-list summary::after { position: absolute; top: 18px; right: 4px; color: var(--clay); content: "+"; font-family: var(--sans); font-size: 20px; }
-    .faq-list details[open] summary::after { content: "−"; }
-    .faq-list details p { max-width: 620px; margin: -3px 40px 21px 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
 
     .contact { padding: clamp(34px, 6vw, 72px); background: var(--paper-deep); }
     .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 54px; align-items: start; }
@@ -126,27 +115,29 @@
     :focus-visible { outline: 2px solid var(--clay); outline-offset: 4px; }
 
     @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr .85fr; gap: 32px; }
-      .hero-art { min-height: 420px; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); gap: 32px; }
+      .hero-art { min-height: 0; }
       .concerns { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 680px) {
       html { scroll-padding-top: 20px; }
       .wrap { width: min(100% - 36px, var(--content)); }
       .demo-banner { padding: 9px 12px; font-size: 9px; letter-spacing: .08em; }
-      .header-inner { min-height: 72px; }
+      .header-inner { min-height: 72px; gap: 10px; }
+      .brand { min-width: 0; }
+      .brand span { font-size: 8px; letter-spacing: .07em; }
       .nav { gap: 12px; }
       .nav a:not(.nav-cta) { display: none; }
-      .nav .nav-cta { padding: 10px 13px; font-size: 11px; }
+      .nav .nav-cta { padding: 9px 10px; font-size: 10px; white-space: nowrap; }
       .hero { padding: 50px 0 60px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-      h1 { max-width: 550px; font-size: clamp(54px, 15vw, 78px); }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+      h1 { max-width: 550px; font-size: clamp(42px, 12vw, 64px); }
       .hero-copy { font-size: 14px; }
-      .hero-art { min-height: 390px; margin-inline: 8px; }
+      .hero-art { min-height: 0; }
       .section { padding: 70px 0; }
-      .section-head, .approach-grid, .faq-layout, .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+      .section-head, .approach-grid, .contact-grid { grid-template-columns: 1fr; gap: 20px; }
       .section-head { margin-bottom: 28px; }
-      h2 { font-size: clamp(42px, 12vw, 58px); }
+      h2 { font-size: clamp(36px, 10vw, 50px); }
       .concerns { grid-template-columns: 1fr; }
       .concern { min-height: 0; padding: 18px 13px 18px 0; }
       .concern:nth-child(even) { padding-left: 0; border-left: 0; }
@@ -156,13 +147,18 @@
       .approach-types { grid-template-columns: 1fr; gap: 10px; margin-top: 22px; }
       .approach-type { padding: 18px; }
       .format-panel { grid-template-columns: 1fr; gap: 27px; padding: 26px 21px; }
-      .format-facts { gap: 0 15px; }
-      .faq-layout { gap: 27px; }
-      .faq-list summary { font-size: 20px; }
+      .format-facts { grid-template-columns: 1fr; gap: 0; }
+      .format-fact { min-width: 0; }
+      .format-fact strong { font-size: 20px; overflow-wrap: anywhere; }
       .contact { padding: 29px 20px; }
       .demo-form { grid-template-columns: 1fr; }
       .demo-form label.full, .form-status { grid-column: auto; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 360px) {
+      .header-inner { gap: 6px; }
+      .brand span { max-width: 170px; font-size: 7px; letter-spacing: .04em; }
+      .nav .nav-cta { padding: 8px 8px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -194,16 +190,13 @@
           <div class="eyebrow">Психологические консультации для взрослых</div>
           <h1>Можно начать с того, что <em>важно именно вам.</em></h1>
           <p class="hero-copy">Спокойное пространство, чтобы разобраться в переживаниях, отношениях и переменах — без давления и универсальных советов.</p>
-          <div class="actions">
-            <a class="button" href="#topics">С чем можно обратиться <span class="arrow" aria-hidden="true">↓</span></a>
-            <a class="button secondary" href="#approach">О терапевтическом подходе</a>
-          </div>
-          <div class="hero-meta" aria-label="Формат консультаций"><span>Для взрослых</span><span>Онлайн</span><span>В удобном темпе</span></div>
         </div>
-        <figure class="hero-art">
-          <img src="assets/pexels-nele-holemans-28806780.jpg" alt="Стоковый портрет модели у окна; это не реальный специалист проекта." width="1600" height="2400" fetchpriority="high" decoding="async">
-          <figcaption class="art-credit">Стоковое фото · <a href="https://www.pexels.com/photo/casual-portrait-of-smiling-woman-by-window-28806780/" target="_blank" rel="noopener noreferrer">Nele Holemans / Pexels</a></figcaption>
-          <div class="art-note">Здесь можно не спешить с ответом.<span>пространство для разговора</span></div>
+        <figure class="hero-photo">
+          <div class="hero-art">
+            <img src="assets/pexels-nele-holemans-28806780.jpg" alt="Стоковый портрет модели у окна; это не реальный специалист проекта." width="1600" height="2400" fetchpriority="high" decoding="async">
+            <div class="art-note">Здесь можно не спешить с ответом.<span>пространство для разговора</span></div>
+          </div>
+          <figcaption class="photo-credit">Стоковое фото: <a href="https://www.pexels.com/photo/casual-portrait-of-smiling-woman-by-window-28806780/" target="_blank" rel="noopener noreferrer">Nele Holemans / Pexels</a></figcaption>
         </figure>
       </div>
     </section>
@@ -222,7 +215,7 @@
           <article class="concern"><h3>Сексуальная сфера</h3><p>Вопросы и трудности, которые хочется обсудить со специалистом.</p></article>
           <article class="concern"><h3>Работа и самореализация</h3><p>Сложности с выбором направления или движением к своим целям.</p></article>
         </div>
-        <p class="topics-note">Если у вас есть психиатрический диагноз, психологическая работа не заменяет наблюдение у врача-психиатра. При алкогольной или наркотической зависимости необходима параллельная помощь врача-нарколога.</p>
+        <p class="topics-note">При психиатрическом диагнозе нужна параллельная помощь врача-психиатра; при алкогольной или наркотической зависимости — врача-нарколога. Консультация не заменяет экстренную или медицинскую помощь. При непосредственной опасности обратитесь в экстренную службу вашего региона.</p>
       </div>
     </section>
 
@@ -246,28 +239,15 @@
       <div class="wrap">
         <div class="format-panel">
           <div>
-            <div class="section-label">Формат и условия</div>
-            <h2>Можно выбрать <em>удобный способ.</em></h2>
-            <p>Встречи проходят онлайн. Продолжительность, расписание и стоимость обсуждаем заранее — до того, как вы решите начать.</p>
+            <div class="section-label">Формат и стоимость</div>
+            <h2>Онлайн или <em>очно.</em></h2>
+            <p>Можно встретиться по видеосвязи или прийти в кабинет. Консультация длится 50 минут и стоит 4 000 ₽.</p>
           </div>
           <div class="format-facts">
-            <div class="format-fact"><strong>Онлайн</strong><span>из удобного для вас места</span></div>
-            <div class="format-fact"><strong>50 минут</strong><span>продолжительность встречи</span></div>
-            <div class="format-fact"><strong>Для взрослых</strong><span>индивидуальные консультации</span></div>
-            <div class="format-fact"><strong>Без спешки</strong><span>темп определяем вместе</span></div>
+            <div class="format-fact"><strong>Онлайн и очно</strong><span>два формата консультации</span></div>
+            <div class="format-fact"><strong>4 000 ₽</strong><span>за встречу продолжительностью 50 минут</span></div>
+            <div class="format-fact address"><strong>г. Примерск, ул. Тисовая, д. 0</strong><span>Вымышленный адрес кабинета — указан только для демонстрации.</span></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="wrap faq-layout">
-        <div><div class="section-label">Частые вопросы</div><h2>Перед первой встречей.</h2></div>
-        <div class="faq-list">
-          <details><summary>Нужно ли заранее готовить запрос?</summary><p>Нет. Можно начать с того, что сейчас занимает ваши мысли. Вместе определим, что важно обсудить.</p></details>
-          <details><summary>Можно ли встретиться онлайн?</summary><p>Да, встреча проходит по видеосвязи. Для разговора понадобится устройство с камерой и спокойное место, где вам будет удобно говорить.</p></details>
-          <details><summary>Сколько встреч понадобится?</summary><p>Универсального числа нет: всё зависит от вашей ситуации и целей. Формат и частоту встреч обсуждаем вместе и при необходимости пересматриваем.</p></details>
-          <details><summary>Что делать, если мне нужна срочная помощь?</summary><p>Если есть непосредственная опасность для вас или другого человека, обратитесь в экстренную службу вашего региона. Психологическая консультация не заменяет экстренную или медицинскую помощь.</p></details>
         </div>
       </div>
     </section>

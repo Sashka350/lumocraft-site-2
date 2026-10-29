@@ -191,7 +191,7 @@ test('Navigation, marquee and FAQ match the current structure', () => {
   assert.doesNotMatch(html, /DESIGN WITH A PURPOSE/);
   assert.doesNotMatch(html, /marqueeItems|\.device|\.stamp/);
   assert.doesNotMatch(visible, /Собери свой комплект|calculator-total|Сайт растёт вместе с задачей|class="extra-list"/);
-  assert.equal((html.match(/<summary>/g) || []).length, 6);
+  assert.equal((visible.match(/<summary>/g) || []).length, 6);
   assert.match(html, /font-family: "Space Grotesk"/);
   assert.match(html, /class="brand-dot"/);
   assert.doesNotMatch(html, /class="brand-logo"/);
@@ -240,6 +240,15 @@ test('Copy is rewritten: no first person, clear package names, working marquee',
   assert.match(html, /See an example/);
 });
 
+test('Homepage follows the agreed story: value, audience, process, packages, FAQ', () => {
+  const sectionIds = ['id="why"', 'id="about"', 'id="process"', 'id="services"', 'id="faq"'];
+  const positions = sectionIds.map((id) => html.indexOf(id));
+  assert.ok(positions.every((position) => position >= 0), 'all narrative sections should be present');
+  assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
+  assert.match(html, /class="eyebrow">Кому подойдёт<\/div>/);
+  assert.match(html, /Работаем с психологами, репетиторами и небольшими компаниями/);
+});
+
 test('Pricing matches the approved 40/90/170 ladder and describes package scope and estimates', () => {
   const body = html.match(/<body>[\s\S]*?<script>/)?.[0] || '';
   const services = html.match(/<section id="services">[\s\S]*?<\/section>/)?.[0] || '';
@@ -274,10 +283,22 @@ test('Infrastructure files use the production domain', () => {
   assert.doesNotMatch(sitemap, /404\.html/);
 });
 
-test('FAQ structured data matches the visible question count', () => {
-  assert.equal((html.match(/"@type": "Question"/g) || []).length, 6);
-  assert.equal((html.match(/<summary>/g) || []).length, 6);
-  assert.doesNotMatch(html, /"name": "Домен и хостинг входят в цену\?"/);
+test('Main page copy has no placeholders and FAQ structured data matches visible text', () => {
+  assert.doesNotMatch(html, /Бла-бла-бла|Placeholder copy\./i);
+
+  const faqSection = html.match(/<section id="faq">([\s\S]*?)<\/section>/)?.[1] || '';
+  const jsonLd = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map(([, contents]) => JSON.parse(contents));
+  const faqSchema = jsonLd.find((schema) => schema['@type'] === 'FAQPage');
+  const visibleQuestions = [...faqSection.matchAll(/<summary>([\s\S]*?)<\/summary>/g)]
+    .map(([, text]) => text.replace(/<[^>]*>/g, '').trim());
+  const visibleAnswers = [...faqSection.matchAll(/<p>([\s\S]*?)<\/p>/g)]
+    .map(([, text]) => text.replace(/<[^>]*>/g, '').trim());
+
+  assert.ok(faqSchema, 'FAQPage JSON-LD should be present');
+  assert.equal(faqSchema.mainEntity.length, 6);
+  assert.deepEqual(faqSchema.mainEntity.map((item) => item.name), visibleQuestions);
+  assert.deepEqual(faqSchema.mainEntity.map((item) => item.acceptedAnswer.text), visibleAnswers);
 });
 
 test('Lead endpoint keeps bot credentials outside the public site directory', () => {

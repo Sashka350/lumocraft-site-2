@@ -6,6 +6,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const privacy = fs.readFileSync(path.join(root, 'privacy.html'), 'utf8');
+const psychologistDemo = fs.readFileSync(path.join(root, 'examples', 'psychologist', 'index.html'), 'utf8');
 
 test('HTML has one primary heading and semantic page regions', () => {
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
@@ -80,8 +81,28 @@ test('Header shows five identical links in the agreed order', () => {
   assert.match(html, /input\[type="checkbox"\] \{ -webkit-appearance: none; appearance: none;/);
   assert.match(html, /input\[type="checkbox"\]:checked::after/);
   assert.equal((body.match(/Посмотреть пример/g) || []).length, 3);
-  assert.equal((body.match(/href="404\.html"/g) || []).length, 3);
+  assert.match(body, /href="examples\/psychologist\/"/);
+  assert.equal((body.match(/href="404\.html"/g) || []).length, 2);
   assert.doesNotMatch(body, /sashka350\.github\.io\/example-/);
+});
+
+test('Psychologist example is responsive, clearly fictional and never sends form data', () => {
+  assert.match(psychologistDemo, /<meta name="robots" content="noindex, follow">/);
+  assert.match(psychologistDemo, /Демо-концепт · специалист вымышлен · фото стоковое/);
+  assert.match(psychologistDemo, /assets\/pexels-nele-holemans-28806780\.jpg/);
+  assert.match(psychologistDemo, /Nele Holemans \/ Pexels/);
+  assert.match(psychologistDemo, /модели у окна; это не реальный специалист проекта/);
+  assert.match(psychologistDemo, /Психологическая консультация не заменяет экстренную или медицинскую помощь/);
+  assert.match(psychologistDemo, /@media \(max-width: 680px\)/);
+  assert.match(psychologistDemo, /данные никуда не отправляются и не сохраняются/);
+  assert.match(psychologistDemo, /event\.preventDefault\(\)/);
+  assert.doesNotMatch(psychologistDemo, /action=|fetch\(|submit\.php|mailto:/i);
+  const demoScript = psychologistDemo.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(demoScript);
+  assert.doesNotThrow(() => new Function(demoScript));
+  const demoPhoto = fs.readFileSync(path.join(root, 'examples', 'psychologist', 'assets', 'pexels-nele-holemans-28806780.jpg'));
+  assert.equal(demoPhoto.slice(0, 3).toString('hex'), 'ffd8ff');
+  assert.ok(demoPhoto.length < 700 * 1024, 'demo portrait should be optimized under 700 KB');
 });
 
 test('Header and mobile nav link to the services and news pages', () => {

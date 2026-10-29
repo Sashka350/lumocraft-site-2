@@ -94,6 +94,13 @@ test('Psychologist example is responsive, clearly fictional and never sends form
   assert.match(psychologistDemo, /модели у окна; это не реальный специалист проекта/);
   assert.match(psychologistDemo, /Психологическая консультация не заменяет экстренную или медицинскую помощь/);
   assert.match(psychologistDemo, /@media \(max-width: 680px\)/);
+  assert.doesNotMatch(psychologistDemo, /id="process"|href="#process"|Как проходят встречи|\.step\b|class="steps"/);
+  assert.match(psychologistDemo, /Поддерживающая психоаналитическая терапия/);
+  assert.match(psychologistDemo, /Терапия, сфокусированная на переносе \(ТФП\)/);
+  assert.match(psychologistDemo, /1–2 встречи в неделю/);
+  assert.match(psychologistDemo, /Отношения/);
+  assert.match(psychologistDemo, /Работа и самореализация/);
+  assert.doesNotMatch(psychologistDemo, /В описании референса|В референсе указаны/);
   assert.match(psychologistDemo, /данные никуда не отправляются и не сохраняются/);
   assert.match(psychologistDemo, /event\.preventDefault\(\)/);
   assert.doesNotMatch(psychologistDemo, /action=|fetch\(|submit\.php|mailto:/i);

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f2e9">
   <meta name="robots" content="noindex, follow">
-  <meta name="description" content="Демонстрационный концепт одностраничного сайта психолога. Все сведения и персонаж вымышлены.">
+  <meta name="description" content="Демонстрационный концепт сайта психолога. Персонаж вымышлен, описание услуг приведено как пример.">
   <title>Елена Миронова — психолог · демонстрационный проект</title>
   <style>
     :root {
@@ -71,25 +71,24 @@
     .section-label { color: var(--clay); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
     h2 { max-width: 770px; margin-bottom: 0; font-family: var(--serif); font-size: clamp(40px, 5.2vw, 68px); font-weight: 400; letter-spacing: -.055em; line-height: 1.02; }
     .section-intro { max-width: 610px; margin: 17px 0 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
-    .concerns { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
-    .concern { min-height: 165px; padding: 24px 22px 18px 0; border-bottom: 1px solid var(--line); }
-    .concern + .concern { padding-left: 22px; border-left: 1px solid var(--line); }
-    .concern-number { display: block; margin-bottom: 26px; color: var(--clay); font-family: var(--serif); font-size: 18px; }
-    .concern h3 { max-width: 220px; margin: 0; font-family: var(--serif); font-size: 23px; font-weight: 400; line-height: 1.2; }
+    .concerns { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); }
+    .concern { min-height: 118px; padding: 22px 28px 21px 0; border-bottom: 1px solid var(--line); }
+    .concern:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--line); }
+    .concern h3 { margin: 0 0 7px; font-family: var(--serif); font-size: 23px; font-weight: 400; line-height: 1.2; }
+    .concern p { max-width: 470px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .topics-note { max-width: 780px; margin: 24px 0 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
 
     .approach { position: relative; overflow: hidden; background: var(--forest); color: #f5f2e9; }
     .approach::after { position: absolute; top: -200px; right: -90px; width: 450px; height: 450px; border: 1px solid rgba(245,242,233,.14); border-radius: 50%; box-shadow: 0 0 0 52px rgba(245,242,233,.035), 0 0 0 104px rgba(245,242,233,.025); content: ""; }
     .approach-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .75fr 1.25fr; gap: 40px; align-items: start; }
     .approach .section-label { color: #d9aa8c; }
     .approach h2 { max-width: 520px; }
-    .approach-copy { max-width: 560px; padding-top: 8px; color: rgba(245,242,233,.76); font-size: 15px; line-height: 1.9; }
-    .approach-copy p:last-child { margin-bottom: 0; }
-
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: step; }
-    .step { min-height: 225px; padding: 25px; border: 1px solid var(--line); border-radius: 3px; counter-increment: step; }
-    .step::before { display: block; margin-bottom: 36px; color: var(--clay); content: "0" counter(step); font-family: var(--serif); font-size: 22px; }
-    .step h3 { margin-bottom: 11px; font-family: var(--serif); font-size: 27px; font-weight: 400; }
-    .step p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+    .approach-copy { max-width: 760px; padding-top: 8px; color: rgba(245,242,233,.76); font-size: 14px; line-height: 1.8; }
+    .approach-copy > p { margin-bottom: 24px; }
+    .approach-types { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 27px; }
+    .approach-type { padding: 20px; border: 1px solid rgba(245,242,233,.22); }
+    .approach-type h3 { margin-bottom: 10px; color: #f5f2e9; font-family: var(--serif); font-size: 21px; font-weight: 400; line-height: 1.2; }
+    .approach-type p { margin: 0; color: rgba(245,242,233,.72); font-size: 11px; line-height: 1.7; }
 
     .format-panel { display: grid; grid-template-columns: 1fr .8fr; gap: 46px; align-items: center; padding: clamp(28px, 5vw, 58px); background: var(--sage); }
     .format-panel h2 { max-width: 560px; }
@@ -130,8 +129,6 @@
       .hero-grid { grid-template-columns: 1fr .85fr; gap: 32px; }
       .hero-art { min-height: 420px; }
       .concerns { grid-template-columns: repeat(2, 1fr); }
-      .concern:nth-child(3) { padding-left: 0; border-left: 0; }
-      .concern:nth-child(4) { border-left: 1px solid var(--line); }
     }
     @media (max-width: 680px) {
       html { scroll-padding-top: 20px; }
@@ -150,14 +147,14 @@
       .section-head, .approach-grid, .faq-layout, .contact-grid { grid-template-columns: 1fr; gap: 20px; }
       .section-head { margin-bottom: 28px; }
       h2 { font-size: clamp(42px, 12vw, 58px); }
-      .concern { min-height: 145px; padding: 19px 14px 15px 0; }
-      .concern + .concern { padding-left: 14px; }
-      .concern:nth-child(3) { padding-left: 0; }
-      .concern h3 { font-size: 21px; }
-      .approach-copy { padding-top: 0; font-size: 14px; }
-      .steps { grid-template-columns: 1fr; gap: 10px; }
-      .step { min-height: 0; padding: 21px; }
-      .step::before { margin-bottom: 22px; }
+      .concerns { grid-template-columns: 1fr; }
+      .concern { min-height: 0; padding: 18px 13px 18px 0; }
+      .concern:nth-child(even) { padding-left: 0; border-left: 0; }
+      .concern h3 { font-size: 20px; }
+      .concern p { font-size: 11px; }
+      .approach-copy { padding-top: 0; font-size: 13px; }
+      .approach-types { grid-template-columns: 1fr; gap: 10px; margin-top: 22px; }
+      .approach-type { padding: 18px; }
       .format-panel { grid-template-columns: 1fr; gap: 27px; padding: 26px 21px; }
       .format-facts { gap: 0 15px; }
       .faq-layout { gap: 27px; }
@@ -199,7 +196,7 @@
           <p class="hero-copy">Спокойное пространство, чтобы разобраться в переживаниях, отношениях и переменах — без давления и универсальных советов.</p>
           <div class="actions">
             <a class="button" href="#topics">С чем можно обратиться <span class="arrow" aria-hidden="true">↓</span></a>
-            <a class="button secondary" href="#process">Как проходит встреча</a>
+            <a class="button secondary" href="#approach">О терапевтическом подходе</a>
           </div>
           <div class="hero-meta" aria-label="Формат консультаций"><span>Для взрослых</span><span>Онлайн</span><span>В удобном темпе</span></div>
         </div>
@@ -215,14 +212,17 @@
       <div class="wrap">
         <div class="section-head">
           <div class="section-label">С чем можно прийти</div>
-          <div><h2>Необязательно сразу знать, <em>с чего начать.</em></h2><p class="section-intro">Можно рассказать о том, что сейчас занимает мысли. Вместе разберёмся, какие темы важно обсудить.</p></div>
+          <div><h2>Можно прийти, даже если <em>пока нет точного запроса.</em></h2><p class="section-intro">Расскажите своими словами, что стало трудно. Необязательно заранее подбирать правильные слова.</p></div>
         </div>
         <div class="concerns">
-          <article class="concern"><span class="concern-number">01</span><h3>Тревога и внутреннее напряжение</h3></article>
-          <article class="concern"><span class="concern-number">02</span><h3>Отношения и личные границы</h3></article>
-          <article class="concern"><span class="concern-number">03</span><h3>Перемены и трудный выбор</h3></article>
-          <article class="concern"><span class="concern-number">04</span><h3>Самооценка и понимание себя</h3></article>
+          <article class="concern"><h3>Отношения</h3><p>Трудности с партнёром, близкими, друзьями или коллегами.</p></article>
+          <article class="concern"><h3>Тревога и настроение</h3><p>Тревожность, подавленность или ощущение, что стало трудно справляться.</p></article>
+          <article class="concern"><h3>Ощущение пустоты или тупика</h3><p>Когда непонятно, чего хочется и куда двигаться дальше.</p></article>
+          <article class="concern"><h3>Понимание себя</h3><p>Хочется разобраться в своих чувствах, реакциях и потребностях.</p></article>
+          <article class="concern"><h3>Сексуальная сфера</h3><p>Вопросы и трудности, которые хочется обсудить со специалистом.</p></article>
+          <article class="concern"><h3>Работа и самореализация</h3><p>Сложности с выбором направления или движением к своим целям.</p></article>
         </div>
+        <p class="topics-note">Если у вас есть психиатрический диагноз, психологическая работа не заменяет наблюдение у врача-психиатра. При алкогольной или наркотической зависимости необходима параллельная помощь врача-нарколога.</p>
       </div>
     </section>
 
@@ -230,25 +230,14 @@
       <div class="wrap approach-grid">
         <div class="section-label">Подход</div>
         <div>
-          <h2>Не искать быстрый ответ, а <em>понять себя.</em></h2>
+          <h2>Психоаналитическая работа — <em>в двух форматах.</em></h2>
           <div class="approach-copy">
-            <p>На встречах можно говорить о том, что действительно важно, без необходимости подбирать «правильные» слова. Мы вместе исследуем ситуацию, чувства и привычные реакции.</p>
-            <p>Темп и направление работы определяем вместе. Цель — не следовать универсальному рецепту, а искать шаги, которые подходят именно вам.</p>
+            <p>Поддерживающая терапия помогает разобраться с отдельной трудностью или внутренним конфликтом. ТФП — терапия, сфокусированная на переносе, — более длительная работа, направленная на устойчивые изменения, а не только на отдельный симптом.</p>
+            <div class="approach-types">
+              <article class="approach-type"><h3>Поддерживающая психоаналитическая терапия</h3><p>Для отдельной трудности или сложностей в одной-двух сферах жизни. Обычно встречи проходят раз в неделю или раз в две недели.</p></article>
+              <article class="approach-type"><h3>Терапия, сфокусированная на переносе (ТФП)</h3><p>Долгосрочная работа с расстройствами личности, направленная на устойчивые изменения. Обычно — 1–2 встречи в неделю; работа может длиться от года.</p></article>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="process">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="section-label">Как проходят встречи</div>
-          <div><h2>Понятный формат, <em>без спешки.</em></h2><p class="section-intro">Вы заранее знаете, как устроена работа, и можете задать вопросы до первой встречи.</p></div>
-        </div>
-        <div class="steps">
-          <article class="step"><h3>Знакомимся</h3><p>Обсуждаем, что привело вас на консультацию, и определяем, что важно сейчас.</p></article>
-          <article class="step"><h3>Работаем с запросом</h3><p>Исследуем ситуацию и ваши переживания в темпе, который подходит вам.</p></article>
-          <article class="step"><h3>Подводим итоги</h3><p>Возвращаемся к тому, что изменилось, и вместе решаем, как двигаться дальше.</p></article>
         </div>
       </div>
     </section>
@@ -307,7 +296,7 @@
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <p>Демонстрационный концепт для портфолио lumocraft. Персонаж, услуги и весь текст вымышлены; фото — стоковое.</p>
+      <p>Демонстрационный концепт для портфолио lumocraft. Персонаж вымышлен, описание услуг приведено как пример; фото — стоковое.</p>
       <a href="../../index.html">На сайт lumocraft ↗</a>
     </div>
   </footer>

@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const privacy = fs.readFileSync(path.join(root, 'privacy.html'), 'utf8');
 const psychologistDemo = fs.readFileSync(path.join(root, 'examples', 'psychologist', 'index.html'), 'utf8');
+const pavelDemo = fs.readFileSync(path.join(root, 'examples', 'pavel-pronin', 'index.html'), 'utf8');
 
 test('HTML has one primary heading and semantic page regions', () => {
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
@@ -82,7 +83,8 @@ test('Header shows five identical links in the agreed order', () => {
   assert.match(html, /input\[type="checkbox"\]:checked::after/);
   assert.equal((body.match(/Посмотреть пример/g) || []).length, 3);
   assert.match(body, /href="examples\/psychologist\/"/);
-  assert.equal((body.match(/href="404\.html"/g) || []).length, 2);
+  assert.match(body, /href="examples\/pavel-pronin\/"/);
+  assert.equal((body.match(/href="404\.html"/g) || []).length, 1);
   assert.doesNotMatch(body, /sashka350\.github\.io\/example-/);
 });
 
@@ -121,6 +123,35 @@ test('Psychologist example is responsive, clearly fictional and never sends form
   const demoPhoto = fs.readFileSync(path.join(root, 'examples', 'psychologist', 'assets', 'pexels-nele-holemans-28806780.jpg'));
   assert.equal(demoPhoto.slice(0, 3).toString('hex'), 'ffd8ff');
   assert.ok(demoPhoto.length < 700 * 1024, 'demo portrait should be optimized under 700 KB');
+});
+
+test('Pavel example is a complete noindex copy with links scoped to its Pages folder', () => {
+  const demoRoot = path.join(root, 'examples', 'pavel-pronin');
+  const base = '/lumocraft-site-2/examples/pavel-pronin/';
+  const htmlFiles = [];
+  const collectHtml = (directory) => {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const file = path.join(directory, entry.name);
+      if (entry.isDirectory()) collectHtml(file);
+      else if (entry.name.endsWith('.html')) htmlFiles.push(file);
+    }
+  };
+  collectHtml(demoRoot);
+
+  assert.ok(htmlFiles.length >= 90, 'the multi-page example should include the complete page set');
+  assert.match(pavelDemo, /<meta name="robots" content="noindex, follow" \/>/);
+  assert.match(pavelDemo, /href="https:\/\/pavelpronin\.art\/"/);
+  assert.match(pavelDemo, new RegExp(`src="${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}assets\/main-[^"]+\\.js"`));
+  assert.match(pavelDemo, /src="images\/hero-bg\.webp"/);
+
+  for (const file of htmlFiles) {
+    const page = fs.readFileSync(file, 'utf8');
+    assert.match(page, /<meta name="robots" content="noindex, follow" \/>/, `${path.relative(demoRoot, file)} should not be indexed`);
+    assert.doesNotMatch(page, /\/pavel-pronin-site2\//, `${path.relative(demoRoot, file)} should not link to the source repo path`);
+    for (const [, url] of page.matchAll(/\b(?:href|src)=["'](\/(?!\/)[^"']*)["']/g)) {
+      assert.ok(url.startsWith(base), `${path.relative(demoRoot, file)} has an unscoped link: ${url}`);
+    }
+  }
 });
 
 test('Header and mobile nav link to the services and news pages', () => {

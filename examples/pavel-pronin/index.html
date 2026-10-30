@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta name="robots" content="noindex, follow" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Павел Пронин — театральный режиссёр и педагог</title>
+  <meta
+    name="description"
+    content="Павел Пронин — театральный режиссёр и педагог. Выпускник мастерской Анатолия Васильева. Спектакли по всей России, преподавание в ГИТИСе."
+  />
+  <meta name="theme-color" content="#0C0C0C" />
+  <!-- Тема до первой отрисовки: ручной выбор важнее, иначе — по времени суток -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var hour = new Date().getHours();
+        var byTime = hour >= 7 && hour < 21 ? 'light' : 'dark';
+        var theme = stored === 'dark' || stored === 'light' ? stored : byTime;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="canonical" href="https://pavelpronin.art/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Павел Пронин — театральный режиссёр и педагог" />
+  <meta
+    property="og:description"
+    content="Спектакли по всей России, педагогические проекты, театральные исследования."
+  />
+  <meta property="og:url" content="https://pavelpronin.art/" />
+    <meta property="og:image" content="https://pavelpronin.art/images/hero-bg.jpg" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:site_name" content="Павел Пронин" />
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='12' fill='%230C0C0C'/%3E%3Ctext x='50' y='68' font-size='56' font-family='Arial' font-weight='bold' fill='%23D4A843' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+  <script type="module" crossorigin src="/lumocraft-site-2/examples/pavel-pronin/assets/main-CRvhPYze.js"></script>
+  <link rel="stylesheet" crossorigin href="/lumocraft-site-2/examples/pavel-pronin/assets/main-BlpnD7eb.css">
+</head>
+
+<body>
+  <!-- ===== ШАПКА ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="/lumocraft-site-2/examples/pavel-pronin/" class="header__logo" data-type-cycle data-type-motion data-type="0">Павел Пронин</a>
+
+      <nav class="header__nav" aria-label="Основная навигация">
+        <ul>
+          <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/news/">Новости</a></li>
+          <li><a class="nav-link" href="#about">Обо мне</a></li>
+          <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/performances/">Спектакли</a></li>
+          <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/pedagogy/">Педагогика</a></li>
+          <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/inscenizations/">Инсценировки</a></li>
+          <li><a class="nav-link" href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a
+          class="lang-link telegram-link"
+          href="https://t.me/pavelpronintheatre"
+          target="_blank"
+          rel="noopener"
+          aria-label="Telegram-канал"
+        >
+          <svg class="icon-telegram" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+
+        <a class="lang-link" href="/lumocraft-site-2/examples/pavel-pronin/en/" aria-label="English version">EN</a>
+
+        <button
+          class="theme-toggle"
+          data-theme-toggle
+          type="button"
+          aria-label="Переключить тему"
+        >
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <button
+          class="burger"
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== МОБИЛЬНОЕ МЕНЮ ===== -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav aria-label="Мобильная навигация">
+      <ul>
+        <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/news/">Новости</a></li>
+        <li><a class="nav-link" href="#about">Обо мне</a></li>
+        <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/performances/">Спектакли</a></li>
+        <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/pedagogy/">Педагогика</a></li>
+        <li><a class="nav-link" href="/lumocraft-site-2/examples/pavel-pronin/inscenizations/">Инсценировки</a></li>
+        <li><a class="nav-link" href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img
+          src="images/hero-bg.webp"
+          alt="Павел Пронин — театральный режиссёр и педагог"
+          fetchpriority="high"
+        />
+        <img
+          class="hero__bg--light"
+          src="images/hero-bg-light.webp"
+          alt=""
+          aria-hidden="true"
+          fetchpriority="high"
+        />
+      </div>
+
+      <div class="hero__fx" aria-hidden="true">
+        <span class="fx-smoke fx-smoke--a"></span>
+        <span class="fx-smoke fx-smoke--b"></span>
+        <span class="fx-spot"></span>
+      </div>
+
+      <div class="container">
+        <div class="hero__content">
+          <p class="hero__overline">Режиссёр · Педагог · Исследователь</p>
+          <h1 class="hero__title">Павел Пронин</h1>
+          <p class="hero__subtitle">Театральный режиссёр и педагог</p>
+          <p class="hero__text">
+            Выпускник мастерской <strong>Анатолия Васильева</strong>.
+            Спектакли по всей России, преподавание в ГИТИСе.
+          </p>
+          <div class="hero__bottom">
+            <div class="hero__actions">
+              <a href="#contacts" class="btn btn--primary btn--lg">Связаться</a>
+            </div>
+            <p class="hero__creds">
+              ГИТИС · мастерская Анатолия Васильева · спектакли по всей России
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== НОВОСТИ ===== -->
+    <section class="section announcements" id="news" aria-labelledby="news-title" data-announcements>
+      <div class="container">
+        <div class="section__header section__header--split animate-on-scroll">
+          <div class="section__header-main">
+            <h2 class="section__title" id="news-title">Новости</h2>
+            <p class="section__lead">
+              Что готовится и что уже случилось.
+            </p>
+          </div>
+          <a class="link-arrow section__header-action" href="/lumocraft-site-2/examples/pavel-pronin/news/">
+            Все новости <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <h3 class="section__subtitle">Ближайшее</h3>
+        <div class="grid announcements__grid" data-announcements-grid></div>
+
+        <div class="announcements__recent is-hidden" data-news-recent-section>
+          <h3 class="section__subtitle">Недавнее</h3>
+          <div class="news__feed" data-news-recent></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ОБО МНЕ ===== -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about">
+          <div class="section__header about__header animate-on-scroll">
+            <h2 class="section__title" id="about-title">Обо мне</h2>
+            <p class="section__lead">
+              Театральный режиссёр и педагог. Выпускник мастерской
+              <strong>Анатолия Васильева</strong>, преподаю в ГИТИСе. Ставлю
+              спектакли по всей России, веду семинары и образовательные
+              проекты, занимаюсь театроведческими исследованиями.
+            </p>
+          </div>
+
+          <div class="about__media">
+            <div class="about__photo about__photo--first animate-on-scroll">
+              <img src="images/portrait-2.webp" alt="Павел Пронин — в работе" loading="lazy" />
+            </div>
+
+            <div class="about__photo about__photo--second animate-on-scroll">
+              <img src="images/portrait-1.jpg" alt="Павел Пронин — портрет" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="about__body">
+            <div class="perf-page__section animate-on-scroll">
+              <h3 class="perf-page__section-title">Биография</h3>
+              <div class="perf-page__desc">
+                <p>Я отношусь к театру как к живому пространству, а не как к
+                цеху по производству зрелищ: здесь текст, актёр и зритель
+                встречаются впервые, и интересно то, что происходит в момент
+                этой встречи, — когда смысл ещё не застыл, когда слово только
+                становится действием.</p>
+                <p>Режиссура для меня — не занятие с указаниями и результатами,
+                а создание условий для встречи: между человеком и текстом,
+                между актёром и его собственным материалом. В центре моей
+                работы — медленный, почти лабораторный труд с актёром, с его
+                телом, голосом и внутренней свободой.</p>
+                <p>Мой путь сложился через ученичество у Анатолия Васильева.
+                Это не столько арсенал конкретных приёмов, сколько способ
+                держать сцену: строгий, внимательный к деталям и в то же время
+                открытый импровизации процесс.</p>
+              </div>
+            </div>
+
+            <div class="perf-page__section animate-on-scroll">
+              <h3 class="perf-page__section-title">Образование</h3>
+              <div class="perf-specs">
+                <div class="perf-spec">
+                  <span class="perf-spec__label">Мастерская</span>
+                  <span class="perf-spec__value">Анатолий Васильев</span>
+                </div>
+                <div class="perf-spec">
+                  <span class="perf-spec__label">Вуз</span>
+                  <span class="perf-spec__value">Российский институт театрального искусства — ГИТИС</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="perf-page__section animate-on-scroll">
+              <h3 class="perf-page__section-title">Опыт</h3>
+              <div class="perf-specs">
+                <div class="perf-spec">
+                  <span class="perf-spec__label">Режиссура</span>
+                  <span class="perf-spec__value">Более 25 постановок в театрах России — см. раздел «Спектакли»</span>
+                </div>
+                <div class="perf-spec">
+                  <span class="perf-spec__label">Педагогика</span>
+                  <span class="perf-spec__value">ГИТИС, ЕГТИ, ЕАСИ, школа учеников Анатолия Васильева — см. раздел «Педагогика»</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="perf-page__section animate-on-scroll" style="margin-bottom: 0;">
+              <h3 class="perf-page__section-title">Исследования</h3>
+              <div class="perf-page__desc">
+                <p>Веду работу над наследием «театральной грамматики» Анатолия
+                Васильева — пытаюсь понять, как устроено движение от текста к
+                сцене: какие решения принимает актёр, как рождается сценическая
+                ситуация и что в этом процессе оговариваемо, а что остаётся
+                невыразимым.</p>
+                <p>Доклады, статьи и рабочие материалы будут появляться в
+                разделе «Театральные исследования».</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== СПЕКТАКЛИ (превью) ===== -->
+    <section class="section" id="performances" aria-labelledby="performances-title">
+      <div class="container">
+        <div class="section__header section__header--split animate-on-scroll">
+          <div class="section__header-main">
+            <h2 class="section__title" id="performances-title">Спектакли</h2>
+            <p class="section__lead">
+              Последние и актуальные работы. Полный список — в каталоге.
+            </p>
+          </div>
+          <a class="link-arrow section__header-action" href="/lumocraft-site-2/examples/pavel-pronin/performances/">
+            Все спектакли <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="grid grid--perfs">
+          <!-- ЗАГЛУШКА: 6 карточек. Заменятся на реальные данные -->
+          <a href="/lumocraft-site-2/examples/pavel-pronin/performances/remember/" class="perf-card animate-on-scroll">
+            <div class="perf-card__media">
+              <img src="https://images.squarespace-cdn.com/content/v1/60bdb86ed3018332f3c6113e/b63bb167-e608-4ab8-ab37-c987a9145e8b/jRASGjgZyK2ICl-6P1fKvo1IoMQ-mXdTxtGcwTR960BJjHcqFBp-mGBp4z9cY5uJgNtHpJavxZu4ZHG5MPEBy3f1.jpg" alt="Спектакль «Помни»" loading="lazy" />
+            </div>
+            <div class="perf-card__body">
+              <h3 class="perf-card__title">«Помни»</h3>
+              <div class="perf-card__theater">Краснодарский Молодёжный театр</div>
+              <div class="perf-card__meta"><span class="badge badge--live">Идёт</span><span>2024</span></div>
+            </div>
+          </a>
+
+          <a href="/lumocraft-site-2/examples/pavel-pronin/performances/sorrowfromthemind/" class="perf-card animate-on-scroll">
+            <div class="perf-card__media">
+              <img src="https://images.squarespace-cdn.com/content/v1/60bdb86ed3018332f3c6113e/1738589675448-7FX31ZQC9RCUFU3TCQS5/5226898848054634031.jpg" alt="Спектакль «Горе от ума»" loading="lazy" />
+            </div>
+            <div class="perf-card__body">
+              <h3 class="perf-card__title">«Горе от ума»</h3>
+              <div class="perf-card__theater">Краснодарский Молодёжный театр</div>
+              <div class="perf-card__meta"><span class="badge badge--live">Идёт</span><span>2024</span></div>
+            </div>
+          </a>
+
+          <a href="/lumocraft-site-2/examples/pavel-pronin/performances/retrohbk/" class="perf-card animate-on-scroll">
+            <div class="perf-card__media">
+              <img src="https://images.squarespace-cdn.com/content/v1/60bdb86ed3018332f3c6113e/1729333761186-NDKUNR0782UC9AYCXVPR/5242509310418869387.jpg" alt="Спектакль «Ретро» в Хабаровском ТЮЗе" loading="lazy" />
+            </div>
+            <div class="perf-card__body">
+              <h3 class="perf-card__title">«Ретро»</h3>
+              <div class="perf-card__theater">Хабаровский ТЮЗ</div>
+              <div class="perf-card__meta"><span class="badge">Архив</span><span>2024</span></div>
+            </div>
+          </a>
+
+          <a href="/lumocraft-site-2/examples/pavel-pronin/performances/kalleblomkvist/" class="perf-card animate-on-scroll">
+            <div class="perf-card__media">
+              <img src="https://images.squarespace-cdn.com/content/v1/60bdb86ed3018332f3c6113e/1701334450754-LBHDHQK003G3KX90T9ZR/photo1695841803.jpeg" alt="Спектакль «Калле Блюмквист»" loading="lazy" />
+            </div>
+            <div class="perf-card__body">
+              <h3 class="perf-card__title">«Калле Блюмквист»</h3>
+              <div class="perf-card__theater">Ведогонь-театр</div>
+              <div class="perf-card__meta"><span class="badge">Архив</span><span>2023</span></div>
+            </div>
+          </a>
+
+          <a href="/lumocraft-site-2/examples/pavel-pronin/performances/starfall/" class="perf-card animate-on-scroll">
+            <div class="perf-card__media">
+              <img src="https://images.squarespace-cdn.com/content/v1/60bdb86ed3018332f3c6113e/1699192798098-QYQDSZI8NJGXX1V6V8UN/Poster.jpg" alt="Спектакль «Звездопад»" loading="lazy" />
+            </div>
+            <div class="perf-card__body">
+              <h3 class="perf-card__title">«Звездопад»</h3>
+              <div class="perf-card__theater">Русский драм. театр Башкортостана</div>
+              <div class="perf-card__meta"><span class="badge">Архив</span><span>2023</span></div>
+            </div>
+          </a>
+
+          <a href="/lumocraft-site-2/examples/pavel-pronin/performances/scarletsails/" class="perf-card animate-on-scroll">
+            <div class="perf-card__media">
+              <img src="https://images.squarespace-cdn.com/content/v1/60bdb86ed3018332f3c6113e/1680622373809-SY2LO8DIQCYEV8PCI32N/Scarlet+Sails.jpg" alt="Спектакль «Алые паруса»" loading="lazy" />
+            </div>
+            <div class="perf-card__body">
+              <h3 class="perf-card__title">«Алые паруса»</h3>
+              <div class="perf-card__theater">Молодёжный Театр Алтая</div>
+              <div class="perf-card__meta"><span class="badge">Архив</span><span>2023</span></div>
+            </div>
+          </a>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- ===== КОНТАКТЫ ===== -->
+    <section class="section" id="contacts" aria-labelledby="contacts-title">
+      <div class="container">
+        <div class="section__header animate-on-scroll">
+          <h2 class="section__title" id="contacts-title">Контакты</h2>
+          <p class="section__lead">Свяжитесь со мной для вопросов по постановкам и образовательным проектам.</p>
+        </div>
+
+        <div class="grid grid--contacts">
+          <button type="button" class="contact-card contact-card--copy animate-on-scroll" data-copy-email="pavel.pronin1986@gmail.com" data-copy-done="Скопировано" data-copy-fail="Не получилось скопировать" title="Скопировать адрес">
+            <div class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </div>
+            <div class="contact-card__label" data-copy-label aria-live="polite">Почта</div>
+            <div class="contact-card__value">pavel.pronin1986@gmail.com</div>
+          </button>
+
+          <a href="tel:+79165671554" class="contact-card animate-on-scroll">
+            <div class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div class="contact-card__label">Телефон</div>
+            <div class="contact-card__value">+7 916 567 15 54</div>
+          </a>
+
+          <a href="https://vk.com/pashapronin" target="_blank" rel="noopener" class="contact-card animate-on-scroll">
+            <div class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.576-1.496c.588-.19 1.341 1.26 2.14 1.818.605.422 1.064.33 1.064.33l2.137-.03s1.117-.071.587-.964c-.043-.073-.308-.661-1.588-1.87-1.34-1.264-1.16-1.059.453-3.246.983-1.332 1.376-2.145 1.253-2.493-.117-.332-.84-.244-.84-.244l-2.406.015s-.178-.025-.31.056c-.13.079-.212.262-.212.262s-.382 1.03-.89 1.907c-1.07 1.85-1.499 1.948-1.674 1.832-.407-.267-.305-1.075-.305-1.648 0-1.793.267-2.54-.52-2.733-.262-.065-.454-.107-1.123-.114-.858-.009-1.585.003-1.996.208-.274.136-.485.44-.356.457.159.022.519.099.71.363.246.341.237 1.107.237 1.107s.142 2.11-.33 2.371c-.325.18-.77-.187-1.725-1.865-.489-.859-.859-1.81-.859-1.81s-.071-.175-.198-.272c-.154-.117-.37-.154-.37-.154l-2.286.015s-.343.01-.469.161c-.112.135-.009.412-.009.412s1.79 4.258 3.817 6.403c1.858 1.967 3.968 1.838 3.968 1.838z"/></svg>
+            </div>
+            <div class="contact-card__label">VK</div>
+            <div class="contact-card__value">pashapronin</div>
+          </a>
+
+          <a href="https://t.me/pashapronin" target="_blank" rel="noopener" class="contact-card animate-on-scroll">
+            <div class="contact-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </div>
+            <div class="contact-card__label">Telegram</div>
+            <div class="contact-card__value">@pashapronin</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== ПОДВАЛ ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <div class="footer__col-title">Павел Пронин</div>
+          <div class="footer__links">
+            <a href="#about">Обо мне</a>
+            <a href="/lumocraft-site-2/examples/pavel-pronin/performances/">Спектакли</a>
+            <a href="/lumocraft-site-2/examples/pavel-pronin/pedagogy/">Педагогика</a>
+            <a href="/lumocraft-site-2/examples/pavel-pronin/inscenizations/">Инсценировки</a>
+            <a href="/lumocraft-site-2/examples/pavel-pronin/news/">Новости</a>
+            <a href="/lumocraft-site-2/examples/pavel-pronin/#contacts">Контакты</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <div class="footer__col-title">Контакты</div>
+          <div class="footer__links">
+            pavel.pronin1986@gmail.com
+            <a href="tel:+79165671554">+7 916 567 15 54</a>
+            <a href="https://vk.com/pashapronin" target="_blank" rel="noopener">VK</a>
+            <a href="https://t.me/pashapronin" target="_blank" rel="noopener">Telegram</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <div class="footer__col-title">Язык</div>
+          <div class="footer__links">
+            <a href="/lumocraft-site-2/examples/pavel-pronin/en/">English version</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 Павел Пронин</span>
+        <span>Режиссёр · Педагог · Исследователь</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

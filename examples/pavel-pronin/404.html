@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Page not found — Pavel Pronin</title>
+
+  <!-- Тема до первой отрисовки: ручной выбор важнее, иначе — по времени суток -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var hour = new Date().getHours();
+        var byTime = hour >= 7 && hour < 21 ? 'light' : 'dark';
+        var theme = stored === 'dark' || stored === 'light' ? stored : byTime;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #0C0C0C;
+      color: #F5F5F5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: clamp(4rem, 16vw, 7rem);
+      font-weight: 800;
+      line-height: 1;
+      color: #D4A843;
+    }
+    h1 {
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-weight: 700;
+      margin: 1.25rem 0 0.75rem;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    p {
+      color: #A3A3A3;
+      max-width: 34rem;
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
+    }
+    a.home {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border: 1px solid #2A2A2A;
+      border-radius: 8px;
+      color: #F5F5F5;
+      text-decoration: none;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    a.home:hover {
+      color: #D4A843;
+      border-color: #D4A843;
+    }
+    .lang {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .lang a {
+      color: #A3A3A3;
+      text-decoration: none;
+      border: 1px solid #2A2A2A;
+      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .lang a:hover,
+    .lang a.is-active {
+      color: #D4A843;
+      border-color: #D4A843;
+    }
+    /* Светлая тема — по времени суток или ручным выбором */
+    [data-theme="light"] body { background: #FAFAF8; color: #1A1A1A; }
+    [data-theme="light"] p { color: #5A5A5A; }
+    [data-theme="light"] a.home { color: #1A1A1A; border-color: #D8D8D4; }
+    [data-theme="light"] .lang a { color: #5A5A5A; border-color: #D8D8D4; }
+  </style>
+</head>
+<body>
+  <div class="lang">
+    <a href="/lumocraft-site-2/examples/pavel-pronin/" title="Русская версия" data-lang="ru">RU</a>
+    <a href="/lumocraft-site-2/examples/pavel-pronin/en/" title="English version" data-lang="en">EN</a>
+  </div>
+  <div class="code">404</div>
+  <h1 data-ru="Страница не найдена" data-en="Page not found">Страница не найдена</h1>
+  <p data-ru="Такой страницы больше нет, либо она ещё не опубликована. Материалы постепенно переносятся на новый сайт."
+     data-en="This page no longer exists, or it has not been published yet. Materials are gradually being moved to the new site.">
+    Такой страницы больше нет, либо она ещё не опубликована. Материалы постепенно переносятся на новый сайт.
+  </p>
+  <a class="home" href="/lumocraft-site-2/examples/pavel-pronin/" data-ru="На главную" data-en="Back to home">На главную</a>
+
+  <script>
+    (function () {
+      var isEn = /\/en\//.test(window.location.pathname);
+      if (!isEn) { document.documentElement.lang = 'ru'; return; }
+      document.documentElement.lang = 'en';
+      var h = document.querySelector('h1');
+      var p = document.querySelector('p');
+      var a = document.querySelector('a.home');
+      if (h) h.textContent = h.getAttribute('data-en');
+      if (p) p.textContent = p.getAttribute('data-en');
+      if (a) { a.textContent = a.getAttribute('data-en'); a.href = '/en/'; }
+      document.querySelectorAll('.lang a').forEach(function (el) {
+        el.classList.toggle('is-active', el.getAttribute('data-lang') === 'en');
+      });
+    })();
+  </script>
+</body>
+</html>

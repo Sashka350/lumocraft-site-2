@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4eee8">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Демонстрационная страница контактов вымышленной студии волос. Адрес и данные не настоящие, форма не отправляет заявки.">
+  <title>Контакты — Срез · демонстрационный концепт</title>
+  <link rel="stylesheet" href="assets/salon.css">
+  <script src="assets/salon.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <div class="demo-strip"><strong>Демо-концепт</strong><span>бренд и тексты вымышлены · фото стоковые</span></div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Срез — на главную"><span class="brand-mark" aria-hidden="true">С</span><span class="brand-copy"><strong>Срез</strong><small>студия волос</small></span></a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="services.html">Услуги</a>
+        <a href="studio.html">Студия</a>
+        <a href="contacts.html" aria-current="page">Контакты</a>
+      </nav>
+      <a class="header-booking" href="#booking">Запись <span class="arrow" aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap page-hero-grid">
+        <div><div class="eyebrow">Контакты · страница 04 / 04</div><h1>Давайте<br>начнём <em>с разговора.</em></h1></div>
+        <p class="page-hero-copy">Финальная страница собирает адрес, расписание и форму записи в одном месте. В этом примере все контактные данные вымышлены.<span class="mono-note">Не вводите настоящие контакты · отправка отключена</span></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap contact-layout">
+        <div class="contact-details">
+          <h2>Как нас найти.</h2>
+          <p>Пример контактного блока для небольшого салона. Здесь нет подключённой карты или реального канала связи.</p>
+          <div class="detail-block"><span>Адрес · вымышленный</span><strong>г. Примерск,<br>ул. Макетная, 0</strong><small>Адрес придуман только для демонстрации и не ведёт к реальному салону.</small></div>
+          <div class="detail-block"><span>График · пример</span><strong>Пн — Сб<br>10:00 — 20:00</strong><small>Расписание также вымышленное.</small></div>
+          <div class="detail-block"><span>Связь</span><strong>Не подключена</strong><small>Телефон, почта и мессенджер не указаны, чтобы не создавать фиктивный контакт.</small></div>
+        </div>
+        <div class="booking-panel" id="booking">
+          <div class="eyebrow">Демонстрационная форма</div>
+          <h2>Запросить запись.</h2>
+          <p class="booking-intro">Поля показывают пример простой формы. Заполненные данные не отправляются и не сохраняются.</p>
+          <p class="demo-form-note">Не вводите настоящие имя, телефон или почту. Это макет интерфейса, а не работающая запись.</p>
+          <form class="booking-form" data-demo-form autocomplete="off">
+            <label>Как к вам обращаться?<input type="text" id="demo-name" placeholder="Ваше имя" required></label>
+            <label>Как связаться?<input type="text" id="demo-contact" placeholder="Телефон или почта" required></label>
+            <label class="full">Что вас интересует?
+              <select id="demo-service" required>
+                <option value="" selected disabled>Выберите направление</option>
+                <option>Стрижка</option>
+                <option>Окрашивание</option>
+                <option>Уход</option>
+                <option>Пока не знаю</option>
+              </select>
+            </label>
+            <button class="button" type="submit">Проверить форму <span class="arrow" aria-hidden="true">↗</span></button>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+          </form>
+          <noscript><p class="noscript-note">В демонстрационном проекте форма не отправляет заявки. Для этого макета JavaScript должен быть включён, чтобы показать сообщение.</p></noscript>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><div class="footer-brand"><a href="index.html">Срез</a><small>Студия волос · вымышленный бренд</small></div><p class="footer-note">Демонстрационный концепт для портфолио lumocraft. Контакты вымышлены; форма не отправляет данные. <a href="../../index.html">Вернуться на сайт lumocraft ↗</a></p></div></footer>
+</body>
+</html>

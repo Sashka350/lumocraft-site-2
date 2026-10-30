@@ -8,6 +8,7 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const privacy = fs.readFileSync(path.join(root, 'privacy.html'), 'utf8');
 const psychologistDemo = fs.readFileSync(path.join(root, 'examples', 'psychologist', 'index.html'), 'utf8');
 const pavelDemo = fs.readFileSync(path.join(root, 'examples', 'pavel-pronin', 'index.html'), 'utf8');
+const salonDemo = fs.readFileSync(path.join(root, 'examples', 'salon', 'index.html'), 'utf8');
 
 test('HTML has one primary heading and semantic page regions', () => {
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
@@ -84,7 +85,8 @@ test('Header shows five identical links in the agreed order', () => {
   assert.equal((body.match(/Посмотреть пример/g) || []).length, 3);
   assert.match(body, /href="examples\/psychologist\/"/);
   assert.match(body, /href="examples\/pavel-pronin\/"/);
-  assert.equal((body.match(/href="404\.html"/g) || []).length, 1);
+  assert.equal((body.match(/href="404\.html"/g) || []).length, 0);
+  assert.match(body, /href="examples\/salon\/"/);
   assert.doesNotMatch(body, /sashka350\.github\.io\/example-/);
 });
 
@@ -151,6 +153,58 @@ test('Pavel example is a complete noindex copy with links scoped to its Pages fo
     for (const [, url] of page.matchAll(/\b(?:href|src)=["'](\/(?!\/)[^"']*)["']/g)) {
       assert.ok(url.startsWith(base), `${path.relative(demoRoot, file)} has an unscoped link: ${url}`);
     }
+  }
+});
+
+test('Salon example is a four-page noindex concept with a safe demo form', () => {
+  const demoRoot = path.join(root, 'examples', 'salon');
+  const pages = ['index.html', 'services.html', 'studio.html', 'contacts.html'];
+
+  assert.match(html, /href="examples\/salon\/" target="_blank"/);
+  assert.match(salonDemo, /Демо-концепт/);
+  assert.match(salonDemo, /бренд и тексты вымышлены · фото стоковые/);
+
+  for (const pageName of pages) {
+    const file = path.join(demoRoot, pageName);
+    const page = fs.readFileSync(file, 'utf8');
+    assert.match(page, /<meta name="robots" content="noindex, follow">/, `${pageName} should not be indexed`);
+    assert.match(page, /Демо-концепт/, `${pageName} should be visibly marked as a concept`);
+    assert.equal((page.match(/<h1\b/g) || []).length, 1, `${pageName} should have one main heading`);
+
+    for (const [, url] of page.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
+      if (/^(?:https?:|mailto:|tel:|#)/i.test(url)) continue;
+      const relative = url.split(/[?#]/, 1)[0];
+      assert.ok(fs.existsSync(path.resolve(path.dirname(file), relative)), `${pageName} has a missing local link or asset: ${url}`);
+    }
+  }
+
+  const salonPages = pages.map((pageName) => fs.readFileSync(path.join(demoRoot, pageName), 'utf8'));
+  for (const destination of ['index.html', 'services.html', 'studio.html', 'contacts.html']) {
+    assert.ok(salonPages.every((page) => page.includes(`href="${destination}"`)), `all salon pages should link to ${destination}`);
+  }
+  assert.match(salonPages[1], /Окрашивание/);
+  assert.doesNotMatch(salonPages[1], /\d[\d ]* ₽/);
+  assert.match(salonPages[3], /г\. Примерск/);
+  assert.match(salonPages[3], /Адрес придуман только для демонстрации/);
+
+  const form = salonPages[3].match(/<form\b[\s\S]*?<\/form>/)?.[0] || '';
+  assert.match(form, /data-demo-form/);
+  assert.doesNotMatch(form, /\bname="/);
+  assert.doesNotMatch(form, /\baction=|\bmethod=/i);
+  assert.match(salonPages[3], /данные не отправляются и не сохраняются/);
+  assert.doesNotMatch(salonPages.join('\n'), /submit\.php|mailto:|fetch\s*\(/i);
+
+  const script = fs.readFileSync(path.join(demoRoot, 'assets', 'salon.js'), 'utf8');
+  assert.match(script, /event\.preventDefault\(\)/);
+  assert.doesNotThrow(() => new Function(script));
+  const css = fs.readFileSync(path.join(demoRoot, 'assets', 'salon.css'), 'utf8');
+  assert.match(css, /@media \(max-width: 680px\)/);
+  assert.match(css, /prefers-reduced-motion/);
+
+  for (const asset of ['hair-editorial.jpg', 'salon-interior.jpg', 'salon-space.jpg']) {
+    const image = fs.readFileSync(path.join(demoRoot, 'assets', asset));
+    assert.equal(image.slice(0, 3).toString('hex'), 'ffd8ff', `${asset} should be a valid JPEG`);
+    assert.ok(image.length < 350 * 1024, `${asset} should be optimized`);
   }
 });
 

@@ -98,10 +98,12 @@ test('Psychologist example is responsive, clearly fictional and never sends form
   assert.match(psychologistDemo, /@media \(max-width: 680px\)/);
   const hero = psychologistDemo.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0] || '';
   assert.doesNotMatch(hero, /class="actions"|class="hero-meta"|В удобном темпе/);
-  assert.match(psychologistDemo, /Онлайн и очно/);
+  assert.match(psychologistDemo, /<section class="section" id="format">[\s\S]*?<div class="section-head">/);
+  assert.match(psychologistDemo, /<h3>Онлайн<\/h3>[\s\S]*?<h3>Очно<\/h3>/);
   assert.match(psychologistDemo, /4 000 ₽/);
   assert.match(psychologistDemo, /г\. Примерск, ул\. Тисовая, д\. 0/);
-  assert.match(psychologistDemo, /Вымышленный адрес кабинета — указан только для демонстрации/);
+  assert.match(psychologistDemo, /Вымышленный адрес, указан только для демонстрации/);
+  assert.doesNotMatch(psychologistDemo, /class="format-panel"/);
   assert.doesNotMatch(psychologistDemo, /id="faq"|Частые вопросы|class="faq-list"/);
   assert.doesNotMatch(psychologistDemo, /id="process"|href="#process"|Как проходят встречи|\.step\b|class="steps"/);
   assert.match(psychologistDemo, /Поддерживающая психоаналитическая терапия/);

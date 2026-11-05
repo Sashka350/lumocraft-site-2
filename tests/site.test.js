@@ -8,7 +8,7 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const privacy = fs.readFileSync(path.join(root, 'privacy.html'), 'utf8');
 const psychologistDemo = fs.readFileSync(path.join(root, 'examples', 'psychologist', 'index.html'), 'utf8');
 const pavelDemo = fs.readFileSync(path.join(root, 'examples', 'pavel-pronin', 'index.html'), 'utf8');
-const salonDemo = fs.readFileSync(path.join(root, 'examples', 'salon', 'index.html'), 'utf8');
+const cafeDemo = fs.readFileSync(path.join(root, 'examples', 'cafe', 'index.html'), 'utf8');
 
 test('HTML has one primary heading and semantic page regions', () => {
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
@@ -86,7 +86,7 @@ test('Header shows five identical links in the agreed order', () => {
   assert.match(body, /href="examples\/psychologist\/"/);
   assert.match(body, /href="examples\/pavel-pronin\/"/);
   assert.equal((body.match(/href="404\.html"/g) || []).length, 0);
-  assert.match(body, /href="examples\/salon\/"/);
+  assert.match(body, /href="examples\/cafe\/"/);
   assert.doesNotMatch(body, /sashka350\.github\.io\/example-/);
 });
 
@@ -156,13 +156,13 @@ test('Pavel example is a complete noindex copy with links scoped to its Pages fo
   }
 });
 
-test('Salon example is a four-page noindex concept with a safe demo form', () => {
-  const demoRoot = path.join(root, 'examples', 'salon');
-  const pages = ['index.html', 'services.html', 'studio.html', 'contacts.html'];
+test('Cafe example is a four-page noindex showcase with real menu content and a safe demo form', () => {
+  const demoRoot = path.join(root, 'examples', 'cafe');
+  const pages = ['index.html', 'menu.html', 'about.html', 'contacts.html'];
 
-  assert.match(html, /href="examples\/salon\/" target="_blank"/);
-  assert.match(salonDemo, /Демо-концепт/);
-  assert.match(salonDemo, /бренд и тексты вымышлены · фото стоковые/);
+  assert.match(html, /href="examples\/cafe\/" target="_blank"/);
+  assert.match(cafeDemo, /Демо-концепт/);
+  assert.match(cafeDemo, /кофейня вымышлена · фото стоковые/);
 
   for (const pageName of pages) {
     const file = path.join(demoRoot, pageName);
@@ -178,30 +178,32 @@ test('Salon example is a four-page noindex concept with a safe demo form', () =>
     }
   }
 
-  const salonPages = pages.map((pageName) => fs.readFileSync(path.join(demoRoot, pageName), 'utf8'));
-  for (const destination of ['index.html', 'services.html', 'studio.html', 'contacts.html']) {
-    assert.ok(salonPages.every((page) => page.includes(`href="${destination}"`)), `all salon pages should link to ${destination}`);
+  const cafePages = pages.map((pageName) => fs.readFileSync(path.join(demoRoot, pageName), 'utf8'));
+  for (const destination of ['index.html', 'menu.html', 'about.html', 'contacts.html']) {
+    assert.ok(cafePages.every((page) => page.includes(`href="${destination}"`)), `all cafe pages should link to ${destination}`);
   }
-  assert.match(salonPages[1], /Окрашивание/);
-  assert.doesNotMatch(salonPages[1], /\d[\d ]* ₽/);
-  assert.match(salonPages[3], /г\. Примерск/);
-  assert.match(salonPages[3], /Адрес придуман только для демонстрации/);
+  assert.match(cafePages[1], /Капучино/);
+  assert.match(cafePages[1], /\d[\d ]* ₽/);
+  assert.match(cafePages[1], /молоко/i);
+  assert.match(cafePages[2], /2021/);
+  assert.match(cafePages[3], /Покровский бульвар/);
+  assert.match(cafePages[3], /8:00–22:00/);
 
-  const form = salonPages[3].match(/<form\b[\s\S]*?<\/form>/)?.[0] || '';
+  const form = cafePages[3].match(/<form\b[\s\S]*?<\/form>/)?.[0] || '';
   assert.match(form, /data-demo-form/);
   assert.doesNotMatch(form, /\bname="/);
   assert.doesNotMatch(form, /\baction=|\bmethod=/i);
-  assert.match(salonPages[3], /данные не отправляются и не сохраняются/);
-  assert.doesNotMatch(salonPages.join('\n'), /submit\.php|mailto:|fetch\s*\(/i);
+  assert.match(cafePages[3], /данные не отправляются и не сохраняются/);
+  assert.doesNotMatch(cafePages.join('\n'), /submit\.php|mailto:|fetch\s*\(/i);
 
-  const script = fs.readFileSync(path.join(demoRoot, 'assets', 'salon.js'), 'utf8');
+  const script = fs.readFileSync(path.join(demoRoot, 'assets', 'cafe.js'), 'utf8');
   assert.match(script, /event\.preventDefault\(\)/);
   assert.doesNotThrow(() => new Function(script));
-  const css = fs.readFileSync(path.join(demoRoot, 'assets', 'salon.css'), 'utf8');
+  const css = fs.readFileSync(path.join(demoRoot, 'assets', 'cafe.css'), 'utf8');
   assert.match(css, /@media \(max-width: 680px\)/);
   assert.match(css, /prefers-reduced-motion/);
 
-  for (const asset of ['hair-editorial.jpg', 'salon-interior.jpg', 'salon-space.jpg']) {
+  for (const asset of ['hero-bar.jpg', 'friends.jpg', 'interior.jpg', 'interior-dark.jpg', 'terrace.jpg', 'cafe-sign.jpg', 'brewing.jpg', 'portafilter.jpg', 'beans.jpg', 'cappuccino.jpg', 'latte-pour.jpg', 'coldbrew.jpg', 'matcha.jpg', 'iced-tea.jpg', 'toast.jpg', 'pancakes.jpg', 'cheesecake.jpg']) {
     const image = fs.readFileSync(path.join(demoRoot, 'assets', asset));
     assert.equal(image.slice(0, 3).toString('hex'), 'ffd8ff', `${asset} should be a valid JPEG`);
     assert.ok(image.length < 350 * 1024, `${asset} should be optimized`);

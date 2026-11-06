@@ -56,7 +56,7 @@ test('Direct contact block and mobile nav are present, portfolio is gone', () =>
   assert.doesNotMatch(html, /portrait-[1235]|portrait-bw/);
   assert.match(html, /id="direct"/);
   assert.match(html, /<h2>Контакты<\/h2>/);
-  assert.match(html, /class="direct-copy">Свяжитесь с нами, если хотите обсудить проект или задать вопрос по сайтам\.</);
+  assert.match(html, /class="direct-copy">Форма необязательна\. Напишите в Telegram или на почту: отвечаем в течение рабочего дня\.</);
   assert.match(html, /class="direct-cards"/);
   assert.match(html, /class="direct-card-icon" aria-hidden="true"><svg/);
   assert.equal((html.match(/class="direct-card"/g) || []).length, 2);
@@ -255,9 +255,7 @@ test('Form choices use package names and custom chips instead of native selects'
   assert.match(html, /\.choice input:checked \+ span \{ border-color: #11140d; background: #11140d; color: var\(--lime\); \}/);
   assert.match(html, /\.choice input \{ position: absolute; width: 1px; height: 1px;/);
   assert.match(html, /type="radio" name="Срок"/);
-  assert.match(html, /type="radio" name="Цвета"/);
   assert.match(html, /<legend>Срок<\/legend>/);
-  assert.match(html, /<legend>Цвета<\/legend>/);
 });
 
 test('Error page matches the site style and is not indexed', () => {
@@ -311,9 +309,9 @@ test('Navigation, marquee and FAQ match the current structure', () => {
   const visible = html.match(/<body>[\s\S]*?<script>/)?.[0] || '';
   assert.match(html, />Услуги<\/a>/);
   assert.match(html, />Контакты<\/a>/);
-  assert.equal((html.match(/<div class="marquee"/g) || []).length, 2);
-  assert.equal((visible.match(/от идеи до запуска/g) || []).length, 2);
-  assert.equal((visible.match(/без сюрпризов/g) || []).length, 2);
+  assert.equal((html.match(/<div class="marquee"/g) || []).length, 1);
+  assert.equal((visible.match(/сайты от 40 000 ₽/g) || []).length, 1);
+  assert.equal((visible.match(/ответ в течение рабочего дня/g) || []).length, 1);
   assert.doesNotMatch(html, /DESIGN WITH A PURPOSE/);
   assert.doesNotMatch(html, /marqueeItems|\.device|\.stamp/);
   assert.doesNotMatch(visible, /Собери свой комплект|calculator-total|Сайт растёт вместе с задачей|class="extra-list"/);
@@ -351,7 +349,7 @@ test('Copy is rewritten: no first person, clear package names, working marquee',
   const visible = html.match(/<body>[\s\S]*?<script>/)?.[0] || '';
   assert.doesNotMatch(html, /Я сам предложу|Я превращаю|Выбрать Start|Выбрать Signal|Обсудить Full|Сайт-витрина до 5 экранов|setup-note|\.extras\b/);
   assert.doesNotMatch(visible, /собираем сайты/i);
-  assert.match(visible, /Проектируем и создаём сайты для людей и компаний/);
+  assert.match(visible, /Сайты для специалистов и малого бизнеса/);
   assert.match(html, />Одностраничный сайт</);
   assert.match(html, />Сайт-витрина</);
   assert.match(html, />Многостраничный сайт</);
@@ -361,7 +359,7 @@ test('Copy is rewritten: no first person, clear package names, working marquee',
   assert.match(html, /data-marquee/);
   assert.match(html, /marquee-group/);
   assert.match(html, /buildMarquee/);
-  assert.equal((html.match(/<span class="marquee-group">/g) || []).length, 2);
+  assert.equal((html.match(/<span class="marquee-group">/g) || []).length, 1);
   assert.doesNotMatch(html, /applyTeamVoice|const teamVoice =/);
   assert.match(html, /See an example/);
 });

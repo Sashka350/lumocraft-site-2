@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5efe4">
+  <meta name="theme-color" content="#11110f">
   <meta name="robots" content="noindex, follow">
-  <meta name="description" content="Меню кофейни «Крема»: эспрессо-напитки, фильтр-кофе, какао и матча, завтраки и десерты. Цены за стандартный объём.">
+  <meta name="description" content="Меню кофейни «Крема»: кофе, матча и лимонады, завтраки до 18:00 и десерты. Состав блюд и цены.">
   <title>Меню — Крема</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/cafe.css">
 </head>
 <body>
@@ -15,219 +18,125 @@
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="index.html" aria-label="Крема — кофейня, на главную">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 40 40" width="38" height="38" fill="none">
-            <circle cx="20" cy="20" r="18.5" stroke="currentColor" stroke-width="1.4"></circle>
-            <g transform="rotate(22 20 20)">
-              <ellipse cx="20" cy="20" rx="8" ry="12" fill="currentColor"></ellipse>
-              <path d="M20 8.6C15.8 13 24.2 16.6 20 21c-4.2 4.4 4.2 6.6 0 10.4" stroke="#f5efe4" stroke-width="2.1" stroke-linecap="round"></path>
-            </g>
-          </svg>
-        </span>
-        <span class="brand-copy"><strong>Крема</strong><small>кофейня</small></span>
-      </a>
+      <a class="brand" href="index.html" aria-label="Крема, на главную">Крема<span>.</span></a>
       <nav class="nav" aria-label="Основная навигация">
         <a href="menu.html" aria-current="page">Меню</a>
         <a href="about.html">Кофейня</a>
         <a href="contacts.html">Контакты</a>
-        <a class="nav-cta" href="contacts.html">Как нас найти <span class="arrow" aria-hidden="true">↗</span></a>
       </nav>
+      <a class="header-cta" href="contacts.html">Покровский, 4 <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
   <main id="main">
     <section class="page-hero">
       <div class="wrap page-hero-grid">
-        <div>
-          <div class="eyebrow">Меню</div>
-          <h1>Меню <em>кофейни.</em></h1>
-        </div>
-        <p class="page-hero-copy">Цены — за стандартный объём. Десерты печём каждое утро, поэтому к вечеру часть позиций разбирают.<span class="page-hero-note">альтернативное молоко — без доплаты</span></p>
+        <h1>Меню</h1>
+        <p>Цены указаны за стандартный объём. Альтернативное молоко добавляем без доплаты. Десерты печём утром, поэтому к вечеру часть позиций заканчивается.</p>
       </div>
     </section>
 
-    <figure class="band photo">
-      <img src="assets/beans.jpg" alt="Обжаренные зёрна кофе крупным планом" width="1280" height="853" fetchpriority="high" decoding="async">
-      <div class="band-card">
-        <strong>Зерно недели — Эфиопия Иргачефф</strong>
-        <span>обжарка 26 октября · ноты бергамота и жасмина</span>
-      </div>
+    <figure class="band">
+      <img src="assets/beans.jpg" alt="Обжаренные кофейные зёрна крупным планом" width="1280" height="853" fetchpriority="high" decoding="async">
+      <figcaption class="band-card"><strong>Зерно недели: Эфиопия Иргачефф</strong><span>Обжарка 26 октября. Во вкусе бергамот и жасмин.</span></figcaption>
     </figure>
 
-    <div class="wrap">
-      <section class="menu-group" aria-labelledby="coffee-title">
-        <div class="menu-group-head">
-          <div>
-            <div class="section-label">01 / Кофе</div>
-            <h2 class="menu-group-title" id="coffee-title">Эспрессо, фильтр, <em>холодный настой.</em></h2>
-          </div>
-          <p class="menu-group-note">Эспрессо варим из зерна недели. Фильтр и пуроверы — односортные, вкус чище, чем у эспрессо-смесей.</p>
+    <section class="menu-section" aria-labelledby="coffee-title">
+      <div class="wrap">
+        <div class="menu-heading">
+          <h2 id="coffee-title">Кофе</h2>
+          <p>Для эспрессо используем зерно недели. Фильтр и пуроверы варим на односортном зерне, чтобы вкус был чище.</p>
         </div>
-        <div class="menu-cards">
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/cappuccino.jpg" alt="Капучино с рисунком на молочной пенке, вид сверху" width="1200" height="1100" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Капучино</h3><span class="card-price">290 ₽</span></div>
-              <p class="card-desc">Эспрессо, молоко и плотная молочная пенка 1:1:1. Классика, которую сложно испортить.</p>
-            </div>
+        <div class="menu-features">
+          <article class="menu-feature">
+            <div class="menu-feature-photo"><img src="assets/cappuccino.jpg" alt="Капучино в белой чашке, вид сверху" width="1200" height="1098" loading="lazy" decoding="async"></div>
+            <div class="menu-feature-body"><div class="menu-item-title"><h3>Капучино</h3><strong>290 ₽</strong></div><p>Эспрессо, молоко и плотная пенка, 300 мл.</p></div>
           </article>
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/latte-pour.jpg" alt="Молоко вливается в чашку с эспрессо" width="1200" height="675" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Флэт уайт</h3><span class="card-price">340 ₽</span></div>
-              <p class="card-desc">Двойной эспрессо и тонкий слой вспененного молока. Крепче капучино, мягче латте.</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/coldbrew.jpg" alt="Колд брю со льдом в высоком стакане" width="1200" height="1800" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Колд брю</h3><span class="card-price">360 ₽</span></div>
-              <p class="card-desc">Холодный настой 18 часов. Плотный, сладкий, без кислотности — зимой тоже заказывают.</p>
-            </div>
+          <article class="menu-feature">
+            <div class="menu-feature-photo"><img src="assets/latte-pour.jpg" alt="Бариста вливает молоко в чашку с эспрессо" width="1200" height="675" loading="lazy" decoding="async"></div>
+            <div class="menu-feature-body"><div class="menu-item-title"><h3>Флэт уайт</h3><strong>340 ₽</strong></div><p>Двойной эспрессо и тонкий слой молока. По вкусу крепче капучино.</p></div>
           </article>
         </div>
         <div class="menu-list">
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Эспрессо</h3><p>30 мл, зерно недели</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">190 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Допио</h3><p>двойная порция, 60 мл</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">230 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Американо</h3><p>эспрессо и горячая вода, 300 мл</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">250 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Латте</h3><p>мягкий молочный вкус, 350 мл</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">320 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Раф классический</h3><p>сливки, ваниль и эспрессо, 300 мл</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">360 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Крем-брюле раф</h3><p>фирменный: карамельная корочка и ваниль</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">390 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Пуровер V60</h3><p>фильтр-кофе одного сорта, 250 мл</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">300 ₽</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="menu-group" aria-labelledby="nocoffee-title">
-        <div class="menu-group-head">
-          <div>
-            <div class="section-label">02 / Не кофе</div>
-            <h2 class="menu-group-title" id="nocoffee-title">Когда кофе <em>уже был.</em></h2>
-          </div>
-          <p class="menu-group-note">Матчу взбиваем вручную, лимонады готовим утром и разливаем по кувшинам за стойкой.</p>
-        </div>
-        <div class="menu-cards">
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/matcha.jpg" alt="Матча-латте с латте-артом на столе у окна" width="1200" height="1800" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Матча-латте</h3><span class="card-price">390 ₽</span></div>
-              <p class="card-desc">Церемониальная матча из Удзи и молоко на выбор. Взбиваем вручную венчиком.</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/iced-tea.jpg" alt="Стакан домашнего лимонада со льдом и лаймом" width="1200" height="1500" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Домашний лимонад</h3><span class="card-price">350 ₽</span></div>
-              <p class="card-desc">Цитрус и маракуйя, 400 мл. Готовим каждое утро, без концентратов.</p>
-            </div>
-          </article>
-        </div>
-        <div class="menu-list">
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Какао на молоке</h3><p>тёмный шоколад 70%, 300 мл</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">320 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Чай листовой</h3><p>чёрный, зелёный или травяной — на выбор</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">300 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Морс клюквенный</h3><p>клюква и яблоко, 300 мл</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">280 ₽</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="menu-group" aria-labelledby="kitchen-title">
-        <div class="menu-group-head">
-          <div>
-            <div class="section-label">03 / Кухня</div>
-            <h2 class="menu-group-title" id="kitchen-title">Завтраки весь день <em>и десерты.</em></h2>
-          </div>
-          <p class="menu-group-note">Готовим с 8:00 до закрытия. Сырники не замораживаем, тесто для панкейков мешаем после заказа.</p>
-        </div>
-        <div class="menu-cards">
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/toast.jpg" alt="Тост с авокадо, яйцом пашот и зерновым хлебом" width="1200" height="1200" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Тост с авокадо</h3><span class="card-price">460 ₽</span></div>
-              <p class="card-desc">Яйцо пашот, томатный конфи и зерновой хлеб из соседней пекарни.</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/pancakes.jpg" alt="Панкейки с бананом и кленовым сиропом" width="1200" height="1452" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Панкейки</h3><span class="card-price">390 ₽</span></div>
-              <p class="card-desc">Банан, кленовый сироп и грецкий орех. Тесто мешаем после заказа.</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-photo photo"><img src="assets/cheesecake.jpg" alt="Кусок чизкейка с ягодным соусом на тарелке" width="1200" height="800" loading="lazy" decoding="async"></div>
-            <div class="card-body">
-              <div class="card-title"><h3>Чизкейк «Нью-Йорк»</h3><span class="card-price">360 ₽</span></div>
-              <p class="card-desc">Классический, запечённый. Подаём с ягодным соусом собственного варенья.</p>
-            </div>
-          </article>
-        </div>
-        <div class="menu-list">
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Сырники</h3><p>со сметаной и ягодным соусом</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">420 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Каша овсяная</h3><p>на молоке, с ягодами и мёдом</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">320 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Круассан миндальный</h3><p>выпечка дня, миндальный крем</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">280 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Синнабон</h3><p>тёплый, с крем-чизом</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">340 ₽</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-main"><h3>Тирамису</h3><p>по рецепту шефа, порция на двоих</p></div>
-            <span class="leader" aria-hidden="true"></span><span class="price">390 ₽</span>
-          </div>
-        </div>
-        <p class="menu-note"><strong>Молоко на выбор:</strong> фермерское коровье — в цене, овсяное, соевое и кокосовое — без доплаты. Сообщите аллергии бариста — подскажем, что подойдёт.</p>
-      </section>
-
-      <div class="callout-wrap">
-        <div class="callout">
-          <h2>Сомневаетесь, что выбрать? <em>Бариста подскажет.</em></h2>
-          <a class="button light" href="contacts.html">Контакты <span class="arrow" aria-hidden="true">↗</span></a>
+          <div class="menu-item"><div><h3>Эспрессо</h3><p>30 мл, зерно недели</p></div><strong>190 ₽</strong></div>
+          <div class="menu-item"><div><h3>Допио</h3><p>Двойная порция, 60 мл</p></div><strong>230 ₽</strong></div>
+          <div class="menu-item"><div><h3>Американо</h3><p>Эспрессо и горячая вода, 300 мл</p></div><strong>250 ₽</strong></div>
+          <div class="menu-item"><div><h3>Латте</h3><p>Мягкий молочный вкус, 350 мл</p></div><strong>320 ₽</strong></div>
+          <div class="menu-item"><div><h3>Раф классический</h3><p>Сливки, ваниль и эспрессо, 300 мл</p></div><strong>360 ₽</strong></div>
+          <div class="menu-item"><div><h3>Крем-брюле раф</h3><p>С карамельной корочкой и ванилью</p></div><strong>390 ₽</strong></div>
+          <div class="menu-item"><div><h3>Колд брю</h3><p>Холодный настой 18 часов</p></div><strong>360 ₽</strong></div>
+          <div class="menu-item"><div><h3>Пуровер V60</h3><p>Фильтр-кофе одного сорта, 250 мл</p></div><strong>300 ₽</strong></div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="menu-section menu-section-tinted" aria-labelledby="nocoffee-title">
+      <div class="wrap">
+        <div class="menu-heading">
+          <h2 id="nocoffee-title">Без кофе</h2>
+          <p>Матчу взбиваем венчиком. Лимонады готовим утром и храним в кувшинах за стойкой.</p>
+        </div>
+        <div class="menu-features">
+          <article class="menu-feature">
+            <div class="menu-feature-photo"><img src="assets/matcha.jpg" alt="Матча-латте на столе у окна" width="1200" height="1800" loading="lazy" decoding="async"></div>
+            <div class="menu-feature-body"><div class="menu-item-title"><h3>Матча-латте</h3><strong>390 ₽</strong></div><p>Церемониальная матча из Удзи и молоко на выбор.</p></div>
+          </article>
+          <article class="menu-feature">
+            <div class="menu-feature-photo"><img src="assets/iced-tea.jpg" alt="Домашний лимонад со льдом и лаймом" width="1200" height="1500" loading="lazy" decoding="async"></div>
+            <div class="menu-feature-body"><div class="menu-item-title"><h3>Домашний лимонад</h3><strong>350 ₽</strong></div><p>Цитрус и маракуйя, 400 мл. Готовим без концентратов.</p></div>
+          </article>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><div><h3>Какао на молоке</h3><p>Тёмный шоколад 70%, 300 мл</p></div><strong>320 ₽</strong></div>
+          <div class="menu-item"><div><h3>Чай листовой</h3><p>Чёрный, зелёный или травяной</p></div><strong>300 ₽</strong></div>
+          <div class="menu-item"><div><h3>Морс клюквенный</h3><p>Клюква и яблоко, 300 мл</p></div><strong>280 ₽</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" aria-labelledby="kitchen-title">
+      <div class="wrap">
+        <div class="menu-heading">
+          <h2 id="kitchen-title">Кухня</h2>
+          <p>Завтраки подаём до 18:00. Сырники не замораживаем, тесто для панкейков мешаем после заказа.</p>
+        </div>
+        <div class="menu-features">
+          <article class="menu-feature">
+            <div class="menu-feature-photo"><img src="assets/toast.jpg" alt="Зерновой тост с авокадо и яйцом пашот" width="1200" height="1200" loading="lazy" decoding="async"></div>
+            <div class="menu-feature-body"><div class="menu-item-title"><h3>Тост с авокадо</h3><strong>460 ₽</strong></div><p>Яйцо пашот, томатный конфи и зерновой хлеб из соседней пекарни.</p></div>
+          </article>
+          <article class="menu-feature">
+            <div class="menu-feature-photo"><img src="assets/pancakes.jpg" alt="Панкейки с бананом и кленовым сиропом" width="1200" height="1450" loading="lazy" decoding="async"></div>
+            <div class="menu-feature-body"><div class="menu-item-title"><h3>Панкейки</h3><strong>390 ₽</strong></div><p>Банан, кленовый сироп и грецкий орех.</p></div>
+          </article>
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><div><h3>Сырники</h3><p>Со сметаной и ягодным соусом</p></div><strong>420 ₽</strong></div>
+          <div class="menu-item"><div><h3>Каша овсяная</h3><p>На молоке, с ягодами и мёдом</p></div><strong>320 ₽</strong></div>
+          <div class="menu-item"><div><h3>Круассан миндальный</h3><p>Выпечка дня с миндальным кремом</p></div><strong>280 ₽</strong></div>
+          <div class="menu-item"><div><h3>Синнабон</h3><p>Тёплый, с крем-чизом</p></div><strong>340 ₽</strong></div>
+          <div class="menu-item"><div><h3>Чизкейк «Нью-Йорк»</h3><p>Запечённый, с ягодным соусом</p></div><strong>360 ₽</strong></div>
+          <div class="menu-item"><div><h3>Тирамису</h3><p>По рецепту шефа, порция на двоих</p></div><strong>390 ₽</strong></div>
+        </div>
+        <p class="menu-note"><strong>Молоко на выбор:</strong> фермерское коровье входит в цену. Овсяное, соевое и кокосовое добавим без доплаты. Если у вас аллергия, предупредите бариста до заказа.</p>
+      </div>
+    </section>
+
+    <section class="menu-help">
+      <div class="wrap menu-help-inner">
+        <div><h2>Бариста поможет выбрать</h2><p>Скажите, что обычно пьёте или какой вкус нравится. Предложим напиток из меню.</p></div>
+        <a class="button button-dark" href="contacts.html">Контакты <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <div class="footer-brand"><strong>Крема</strong><small>кофейня</small></div>
-      <p class="footer-note">Демонстрационный сайт: кофейня «Крема» вымышлена, меню, цены и контакты созданы как пример работы студии. <a href="../../index.html">На сайт lumocraft ↗</a></p>
+    <div class="wrap">
+      <a class="footer-wordmark" href="index.html" aria-label="Крема, на главную">Крема</a>
+      <div class="footer-bottom">
+        <nav class="footer-nav" aria-label="Навигация в подвале"><a href="menu.html">Меню</a><a href="about.html">Кофейня</a><a href="contacts.html">Контакты</a></nav>
+        <p class="footer-note">Демонстрационный сайт. «Крема», меню, цены и контакты вымышлены. <a href="../../index.html">Сайт lumocraft ↗</a></p>
+      </div>
     </div>
   </footer>
 </body>

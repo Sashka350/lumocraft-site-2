@@ -66,18 +66,18 @@ test('Direct contact block and mobile nav are present, portfolio is gone', () =>
   assert.doesNotMatch(html, /\.direct-actions|\.direct-email\b/);
   assert.match(html, /footer \{[^}]*background: var\(--panel\)/);
   assert.match(html, /class="mobile-nav"/);
-  assert.match(html, /grid-template-columns: repeat\(5, 1fr\); gap: 0; border-top: 1px solid var\(--line\); background: rgba\(16,17,16/);
+  assert.match(html, /grid-template-columns: repeat\(3, 1fr\); gap: 0; border-top: 1px solid var\(--line\); background: rgba\(16,17,16/);
   assert.doesNotMatch(html, /\.contact-actions|\.button\.ghost.*11140d !important/);
 });
 
-test('Header shows five identical links in the agreed order', () => {
+test('Header shows three identical links in the agreed order', () => {
   const body = html.match(/<body>[\s\S]*?<script>/)?.[0] || '';
   assert.doesNotMatch(body, />Работа<\/a>/);
   assert.doesNotMatch(html, /class="nav-cta"/);
-  assert.match(html, /<a class="nav-link" href="#services">Услуги<\/a>\s*<a class="nav-link" href="#contact">Оставить заявку<\/a>\s*<a class="nav-link" href="#direct">Контакты<\/a>\s*<a class="nav-link" href="services\.html">Цены<\/a>\s*<a class="nav-link" href="news\.html">Новости<\/a>/);
-  assert.equal((body.match(/class="nav-link"/g) || []).length, 5);
+  assert.match(html, /<a class="nav-link" href="#services">Услуги<\/a>\s*<a class="nav-link" href="#contact">Оставить заявку<\/a>\s*<a class="nav-link" href="#direct">Контакты<\/a>\s*<div class="lang"/);
+  assert.equal((body.match(/class="nav-link"/g) || []).length, 3);
   assert.doesNotMatch(html, /nav-btn/);
-  assert.match(html, /class="mobile-nav"[^>]*><a href="#services">Услуги<\/a><a href="#contact">Заявка<\/a><a href="#direct">Контакты<\/a><a href="services\.html">Цены<\/a><a href="news\.html">Новости<\/a>/);
+  assert.match(html, /class="mobile-nav"[^>]*><a href="#services">Услуги<\/a><a href="#contact">Заявка<\/a><a href="#direct">Контакты<\/a><\/nav>/);
   assert.match(html, /@keyframes brand-pulse/);
   assert.match(html, /\.brand-dot \{[^}]*animation: brand-pulse/);
   assert.match(html, /input\[type="checkbox"\] \{ -webkit-appearance: none; appearance: none;/);
@@ -210,22 +210,13 @@ test('Cafe example is a four-page noindex showcase with real menu content and a 
   }
 });
 
-test('Header and mobile nav link to the services and news pages', () => {
-  const services = fs.readFileSync(path.join(root, 'services.html'), 'utf8');
-  const news = fs.readFileSync(path.join(root, 'news.html'), 'utf8');
-  assert.match(html, /<a class="nav-link" href="services\.html">Цены<\/a>\s*<a class="nav-link" href="news\.html">Новости<\/a>/);
-  assert.match(html, /\.nav-link\[aria-current="page"\] \{ color: var\(--lime\); \}/);
-  assert.doesNotMatch(html, /nav-btn/);
-  assert.match(html, /'Цены': 'Prices', 'Новости': 'News', 'Заявка': 'Enquiry'/);
-  for (const page of [services, news]) {
-    assert.match(page, /<a class="nav-link" href="services\.html"[^>]*>Цены<\/a>/);
-    assert.match(page, /<a class="nav-link" href="news\.html"[^>]*>Новости<\/a>/);
-    assert.doesNotMatch(page, /nav-btn/);
-    assert.match(page, /grid-template-columns: repeat\(5, 1fr\)/);
-    assert.match(page, /<a href="services\.html" data-ru="Цены" data-en="Prices">Цены<\/a>/);
-  }
-  assert.match(services, /<a class="nav-link" href="services\.html" aria-current="page"/);
-  assert.match(news, /<a class="nav-link" href="news\.html" aria-current="page"/);
+test('Separate prices and news pages and their navigation links are removed', () => {
+  assert.equal(fs.existsSync(path.join(root, 'services.html')), false);
+  assert.equal(fs.existsSync(path.join(root, 'news.html')), false);
+  assert.doesNotMatch(html, /href="services\.html"|href="news\.html"/);
+  assert.doesNotMatch(html, /'Цены': 'Prices'|'Новости': 'News'/);
+  assert.match(html, /'Заявка': 'Enquiry'/);
+  assert.match(html, /grid-template-columns: repeat\(3, 1fr\)/);
   assert.doesNotMatch(html, /nav-pages|nav-page-link|Темы и услуги/);
 });
 

@@ -355,7 +355,7 @@
     .direct-card-value { font-size: 19px; font-weight: 800; letter-spacing: -.03em; overflow-wrap: anywhere; transition: color 200ms var(--ease); }
     .direct-card:hover .direct-card-value { color: var(--lime); }
     .direct-card-hint { margin-top: auto; padding-top: 18px; color: var(--muted); font-size: 12px; }
-    .mobile-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; display: none; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--line); background: rgba(16,17,16,.96); backdrop-filter: blur(12px); }
+    .mobile-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; display: none; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); background: rgba(16,17,16,.96); backdrop-filter: blur(12px); }
     .mobile-nav a { padding: 14px 0 16px; color: var(--muted-strong); font-size: 11px; font-weight: 700; text-align: center; text-decoration: none; }
     .mobile-nav a:hover, .mobile-nav a:active { color: var(--lime); }
     @media (max-width: 820px) {
@@ -653,8 +653,6 @@
           <a class="nav-link" href="#services">Услуги</a>
           <a class="nav-link" href="#contact">Оставить заявку</a>
           <a class="nav-link" href="#direct">Контакты</a>
-          <a class="nav-link" href="services.html">Цены</a>
-          <a class="nav-link" href="news.html">Новости</a>
           <div class="lang" aria-label="Выбор языка"><button class="active" type="button">RU</button><span>/</span><button type="button">EN</button></div>
         </div>
       </nav>
@@ -753,7 +751,7 @@
   </main>
 
     <footer id="privacy"><div class="wrap footer-grid"><div><a class="footer-brand" href="#top">lumocraft</a><p>Студия веб-дизайна<br>Сайты, которым доверяют.</p></div><div><span class="mono">Навигация</span><a href="#services">Услуги</a><a href="#contact">Оставить заявку</a><a href="#direct">Контакты</a></div><div><span class="mono">Связь</span><span>contact@lumocraft.ru</span><a href="https://t.me/sassha_at" target="_blank" rel="noreferrer">Telegram ↗</a></div><div><span class="mono">Документы</span><a href="privacy.html">Политика конфиденциальности</a><button class="cookie-manage footer-cookie-manage" type="button">Настройки cookies</button></div><div class="footer-bottom"><span>© 2026 lumocraft</span></div></div></footer>
-  <nav class="mobile-nav" aria-label="Мобильная навигация"><a href="#services">Услуги</a><a href="#contact">Заявка</a><a href="#direct">Контакты</a><a href="services.html">Цены</a><a href="news.html">Новости</a></nav>
+  <nav class="mobile-nav" aria-label="Мобильная навигация"><a href="#services">Услуги</a><a href="#contact">Заявка</a><a href="#direct">Контакты</a></nav>
   <script>
     document.querySelectorAll('.lead-form').forEach((form) => {
       const trap = document.createElement('input');
@@ -1086,7 +1084,7 @@
       'Хочу, чтобы предложили': 'Let us suggest',
       'Я согласен на обработку данных для ответа на заявку.': 'I agree to the processing of my data to receive a reply.',
       'Оставить заявку': 'Leave a request', 'Посмотреть пример': 'See an example',
-      'Цены': 'Prices', 'Новости': 'News', 'Заявка': 'Enquiry',
+      'Заявка': 'Enquiry',
       'сайты от 40 000 ₽': 'websites from 40,000 ₽', 'сроки от 1 недели': 'from 1 week', 'цена фиксируется до начала работы': 'price fixed before work begins', 'ответ в течение рабочего дня': 'reply within one working day',
       '46,1': '46.1', 'замечаний о достоверности сайта касались его внешнего вида': 'of the comments about a website’s credibility concerned its appearance',
       'В исследовании Stanford Persuasive Technology Lab участники оценивали сайты и в почти половине комментариев о надёжности говорили о дизайне, а не о содержании.': 'In a Stanford Persuasive Technology Lab study, participants evaluated websites; in almost half of the comments about reliability they talked about design, not content.',

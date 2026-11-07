@@ -305,24 +305,49 @@ test('Brand assets and conversion helpers are wired into the page', () => {
   assert.match(html, /Lumocraft%20logo\.png/);
 });
 
-test('Navigation, marquee and FAQ match the current structure', () => {
+test('Navigation, static facts and FAQ match the redesigned structure', () => {
   const visible = html.match(/<body>[\s\S]*?<script>/)?.[0] || '';
   assert.match(html, />Услуги<\/a>/);
   assert.match(html, />Контакты<\/a>/);
-  assert.equal((html.match(/<div class="marquee"/g) || []).length, 1);
-  assert.equal((visible.match(/сайты от 40 000 ₽/g) || []).length, 1);
-  assert.equal((visible.match(/ответ в течение рабочего дня/g) || []).length, 1);
-  assert.doesNotMatch(html, /DESIGN WITH A PURPOSE/);
-  assert.doesNotMatch(html, /marqueeItems|\.device|\.stamp/);
-  assert.doesNotMatch(visible, /Собери свой комплект|calculator-total|Сайт растёт вместе с задачей|class="extra-list"/);
+  assert.doesNotMatch(html, /class="marquee|data-marquee|marquee-group|@keyframes marquee|buildMarquee/);
+  assert.equal((visible.match(/class="hero-facts"/g) || []).length, 1);
+  assert.match(visible, /от 40 000 ₽/);
+  assert.match(visible, /1–7 недель/);
+  assert.match(visible, /1 рабочий день/);
   assert.equal((visible.match(/<summary>/g) || []).length, 6);
   assert.match(html, /font-family: "Space Grotesk"/);
   assert.match(html, /class="brand-dot"/);
   assert.doesNotMatch(html, /class="brand-logo"/);
-  assert.doesNotMatch(html.match(/<div class="marquee"[\s\S]*?<\/div>/)?.[0] || '', /Александр|ALEXANDER/);
 });
 
-test('New UI: preloader, grain, scrollspy, back-to-top, copy email, lang prompt, autocomplete', () => {
+test('Live work gallery links to three examples with local optimized previews', () => {
+  assert.equal((html.match(/class="work-item(?: |")/g) || []).length, 3);
+  for (const example of ['pavel-pronin', 'psychologist', 'cafe']) {
+    assert.match(html, new RegExp(`class="work-item[^>]*href="examples/${example}/" target="_blank"`));
+  }
+  for (const image of ['work-pavel.webp', 'work-psychologist.webp', 'work-cafe.webp']) {
+    const file = path.join(root, 'assets', image);
+    assert.match(html, new RegExp(`src="assets/${image}"`));
+    const buffer = fs.readFileSync(file);
+    assert.equal(buffer.subarray(0, 4).toString('ascii'), 'RIFF');
+    assert.equal(buffer.subarray(8, 12).toString('ascii'), 'WEBP');
+    assert.ok(buffer.length < 120 * 1024, `${image} should stay below 120 KB`);
+  }
+});
+
+test('Process is a six-step ordered list with concrete client touchpoints', () => {
+  const process = html.match(/<section id="process">([\s\S]*?)<\/section>/)?.[1] || '';
+  assert.match(process, /<ol class="process-list">/);
+  assert.equal((process.match(/class="process-step"/g) || []).length, 6);
+  for (const text of ['Обсуждаем задачу', 'Подписываем договор', 'Согласуем структуру и дизайн', 'Показываем рабочую версию', 'Вносим правки', 'Передаём готовый сайт']) {
+    assert.match(process, new RegExp(text));
+  }
+  assert.match(process, /100% предоплаты/);
+  assert.match(process, /промежуточный результат/);
+  assert.doesNotMatch(process, /три понятных этапа|class="steps"/);
+});
+
+test('UI helpers stay available without intrusive pointer effects', () => {
   assert.match(html, /id="preloader"/);
   assert.match(html, /preloader-video/);
   assert.match(html, /class="grain"/);
@@ -334,9 +359,8 @@ test('New UI: preloader, grain, scrollspy, back-to-top, copy email, lang prompt,
   assert.match(html, /autocomplete="name"/);
   assert.match(html, /autocomplete="tel"/);
   assert.match(html, /@keyframes shake/);
-  assert.match(html, /perspective\(900px\)/);
   assert.match(html, /hero-video-wrap/);
-  assert.doesNotMatch(html, /hero-art:hover \.device|screen-title|stamp strong/);
+  assert.doesNotMatch(html, /perspective\(900px\)|finePointer|hero-art:hover \.device|screen-title|stamp strong/);
 });
 
 test('Inline browser script has valid JavaScript syntax', () => {
@@ -345,7 +369,7 @@ test('Inline browser script has valid JavaScript syntax', () => {
   assert.doesNotThrow(() => new Function(script));
 });
 
-test('Copy is rewritten: no first person, clear package names, working marquee', () => {
+test('Copy uses concrete language and includes translations for the new sections', () => {
   const visible = html.match(/<body>[\s\S]*?<script>/)?.[0] || '';
   assert.doesNotMatch(html, /Я сам предложу|Я превращаю|Выбрать Start|Выбрать Signal|Обсудить Full|Сайт-витрина до 5 экранов|setup-note|\.extras\b/);
   assert.doesNotMatch(visible, /собираем сайты/i);
@@ -353,19 +377,15 @@ test('Copy is rewritten: no first person, clear package names, working marquee',
   assert.match(html, />Одностраничный сайт</);
   assert.match(html, />Сайт-витрина</);
   assert.match(html, />Многостраничный сайт</);
-  assert.doesNotMatch(visible, /Ознакомиться с работами/);
-  assert.doesNotMatch(visible, /Красивый сайт — это не декор|Сначала доверие\. Потом разговор\.|Сначала смысл\.|Без тёмного леса из согласований\.|Без сюрпризов<br>|case-preview|За несколько секунд человек решает|Мы соединяем выразительный арт-дирекшн|Мы превращаем первое впечатление/);
-  assert.match(html, /marquee-shift/);
-  assert.match(html, /data-marquee/);
-  assert.match(html, /marquee-group/);
-  assert.match(html, /buildMarquee/);
-  assert.equal((html.match(/<span class="marquee-group">/g) || []).length, 1);
-  assert.doesNotMatch(html, /applyTeamVoice|const teamVoice =/);
+  assert.doesNotMatch(visible, /Ознакомиться с работами|Красивый сайт — это не декор|Сначала доверие\. Потом разговор\.|Сначала смысл\.|Без тёмного леса из согласований\.|case-preview|Мы превращаем первое впечатление/);
+  assert.match(html, /See the websites live/);
+  assert.match(html, /How we will work together/);
   assert.match(html, /See an example/);
+  assert.doesNotMatch(html, /applyTeamVoice|const teamVoice =/);
 });
 
-test('Homepage follows the agreed story: value, audience, process, packages, FAQ', () => {
-  const sectionIds = ['id="why"', 'id="about"', 'id="process"', 'id="services"', 'id="faq"'];
+test('Homepage story leads with work, then value, audience, process, packages and FAQ', () => {
+  const sectionIds = ['id="examples"', 'id="why"', 'id="about"', 'id="process"', 'id="services"', 'id="faq"'];
   const positions = sectionIds.map((id) => html.indexOf(id));
   assert.ok(positions.every((position) => position >= 0), 'all narrative sections should be present');
   assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
